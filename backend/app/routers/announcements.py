@@ -148,7 +148,7 @@ ANNOUNCEMENTS: list[Announcement] = [
 # 置顶技术档案：12 章节正文。
 # 事实来源：frontend/package.json、backend/requirements.txt、app/config.py、
 # app/main.py、app/models.py、app/services/*、docs/STATUS.md 与 2026-10-14
-# pytest 回归结果（309 项全部通过）。环境变量只写名称，不写任何取值。
+# pytest 回归结果（311 项全部通过）。环境变量只写名称，不写任何取值。
 # ---------------------------------------------------------------------------
 
 TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [

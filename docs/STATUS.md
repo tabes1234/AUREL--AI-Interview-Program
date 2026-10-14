@@ -1,6 +1,29 @@
 # AUREL 观澜 — 项目状态
 
-更新时间：2026-10-14（「海蓝微光」全站鼠标光效重做）
+更新时间：2026-10-14（仓库清理与工程化：代码分割、CI、README 重写、引航与澜讯内容更新）
+
+## 仓库清理与工程化（已完成，2026-10-14）
+
+### 仓库与文档清理
+
+- 删除 AI 制作痕迹文件：`docs/design/` 两张设计参考图、[AiStatusBadge.tsx](../frontend/src/components/AiStatusBadge.tsx)（「AI 未配置」标识组件及其 hook `useAiStatus`，移除 8 个页面挂载）、`backend/scripts/integration_real.py` 开发期脚本；`ServiceStatus`（连接故障提示，非 AI 标识）保留
+- [README.md](../README.md) 重写（273 → 约 100 行）：删除写死的模型 ID、已被移除的邮件验证码章节与死接口、过时开发阶段与演示流程；技术栈、快速开始、测试、Docker 部署、安全约定均与当前代码对齐
+- 澜讯公告下线 11 条前期开发过程公告（第一阶段~第五阶段、v0.3.0 发布等），保留 5 条近期核心公告 + 置顶技术档案；[test_announcements.py](../backend/tests/test_announcements.py) 断言更新为「历史条目不得复活、保留公告须带日期」
+- 引航引导第五步由「名笺」改为「知途问津 · AI 职业规划」（真实页面截图 `onboarding-career.png`），前四步文案按最新功能润色；旧名笺截图删除
+- GitHub 仓库描述已通过 API 更新为英文简介
+
+### 缺陷修复
+
+- 工作台「本周澜记」周报请求在页面切换时被中止，每次留下 `net::ERR_ABORTED` 控制台噪声（浏览器网络层行为，JS 无法抑制）：[DashboardPage.tsx](../frontend/src/pages/DashboardPage.tsx) 改为模块级 60 秒缓存 + 在途请求去重，重复进入不重复请求；[client.ts](../frontend/src/api/client.ts) 的 `request` 对 AbortError 原样透传避免误报网络错误。浏览器实测刷新与多次往返 console 全净
+
+### 工程化
+
+- 路由级代码分割：[App.tsx](../frontend/src/App.tsx) 全部 22 个页面改为 `React.lazy` 动态导入（4 个命名导出页面在 `then` 中适配默认导出），Suspense fallback 为轻量旋转占位；生产构建主 chunk **852KB → 275KB（gzip 239 → 87KB，约 -63%）**，页面按需加载
+- 新增 [.github/workflows/ci.yml](../.github/workflows/ci.yml)：push / PR 自动执行前端（npm ci + lint + typecheck + build）与后端（pip install + pytest）双 job，Node 22 / Python 3.13 并配依赖缓存
+
+### 验证
+
+- 后端 pytest 311/311 通过；前端 eslint / tsc / vite build 全绿；浏览器实测引航五步（第五步知途截图正确）、澜讯仅剩 1 置顶 + 5 条近期公告、懒加载路由切换正常、控制台无错误
 
 ## 海蓝微光：全站鼠标跟随光效重做（已完成，2026-10-14）
 

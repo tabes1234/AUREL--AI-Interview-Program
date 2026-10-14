@@ -1,34 +1,46 @@
 import { MotionConfig } from 'motion/react'
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AuthProvider } from './context/AuthProvider'
 import { RequireAuth } from './context/RequireAuth'
 import { OnboardingProvider } from './components/onboarding/OnboardingGuide'
 import AppLayout from './components/layout/AppLayout'
-import AboutPage from './pages/AboutPage'
-import AnnouncementsPage from './pages/AnnouncementsPage'
-import TechArchivePage from './pages/TechArchivePage'
-import AuthPage from './pages/AuthPage'
-import CareerGuidePage from './pages/CareerGuidePage'
-import DashboardPage from './pages/DashboardPage'
-import HomePage from './pages/HomePage'
-import InterviewNewPage from './pages/InterviewNewPage'
-import InterviewPreviewPage from './pages/InterviewPreviewPage'
-import InterviewSessionPage from './pages/InterviewSessionPage'
-import { KnowledgePage } from './pages/KnowledgePage'
-import { ExpressionPage } from './pages/ExpressionPage'
-import { MatchingPage } from './pages/MatchingPage'
-import JobsPage from './pages/JobsPage'
-import JobLibraryPage from './pages/JobLibraryPage'
-import ResumePage from './pages/ResumePage'
-import MistakesPage from './pages/MistakesPage'
-import ChallengesPage from './pages/ChallengesPage'
-import ConcertoPage from './pages/ConcertoPage'
-import MePage from './pages/MePage'
-import NotFoundPage from './pages/NotFoundPage'
-import ReportDetailPage from './pages/ReportDetailPage'
-import ReportsPage from './pages/ReportsPage'
-import { SkillsPage } from './pages/SkillsPage'
+import { Loader2 } from 'lucide-react'
+
+// 路由级代码分割：每个页面独立分块，首屏只加载当前路由（命名导出的页面在 then 中适配为默认导出）
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const AnnouncementsPage = lazy(() => import('./pages/AnnouncementsPage'))
+const TechArchivePage = lazy(() => import('./pages/TechArchivePage'))
+const AuthPage = lazy(() => import('./pages/AuthPage'))
+const CareerGuidePage = lazy(() => import('./pages/CareerGuidePage'))
+const DashboardPage = lazy(() => import('./pages/DashboardPage'))
+const HomePage = lazy(() => import('./pages/HomePage'))
+const InterviewNewPage = lazy(() => import('./pages/InterviewNewPage'))
+const InterviewPreviewPage = lazy(() => import('./pages/InterviewPreviewPage'))
+const InterviewSessionPage = lazy(() => import('./pages/InterviewSessionPage'))
+const KnowledgePage = lazy(() => import('./pages/KnowledgePage').then((m) => ({ default: m.KnowledgePage })))
+const ExpressionPage = lazy(() => import('./pages/ExpressionPage').then((m) => ({ default: m.ExpressionPage })))
+const MatchingPage = lazy(() => import('./pages/MatchingPage').then((m) => ({ default: m.MatchingPage })))
+const JobsPage = lazy(() => import('./pages/JobsPage'))
+const JobLibraryPage = lazy(() => import('./pages/JobLibraryPage'))
+const ResumePage = lazy(() => import('./pages/ResumePage'))
+const MistakesPage = lazy(() => import('./pages/MistakesPage'))
+const ChallengesPage = lazy(() => import('./pages/ChallengesPage'))
+const ConcertoPage = lazy(() => import('./pages/ConcertoPage'))
+const MePage = lazy(() => import('./pages/MePage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const ReportDetailPage = lazy(() => import('./pages/ReportDetailPage'))
+const ReportsPage = lazy(() => import('./pages/ReportsPage'))
+const SkillsPage = lazy(() => import('./pages/SkillsPage').then((m) => ({ default: m.SkillsPage })))
+
+/** 分块加载瞬间的品牌化占位：居中轻量旋转，不闪整页白屏 */
+function RouteFallback() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center" role="status" aria-label="页面加载中">
+      <Loader2 className="h-6 w-6 animate-spin text-brand-500/80" aria-hidden="true" />
+    </div>
+  )
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -44,56 +56,58 @@ export default function App() {
       <AuthProvider>
         <OnboardingProvider>
           <ScrollToTop />
-          <Routes>
-          {/* 公开页面：首页、观澜之意、澜讯、认证 */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/announcements" element={<AnnouncementsPage />} />
-          <Route path="/announcements/tech-archive" element={<TechArchivePage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          {/* 工作台：全部需要登录（未登录访问时跳转 /auth 并记录来路） */}
-          <Route
-            element={
-              <RequireAuth>
-                <AppLayout />
-              </RequireAuth>
-            }
-          >
-            <Route path="/app" element={<DashboardPage />} />
-            <Route path="/career-guide" element={<CareerGuidePage />} />
-            <Route path="/interview/new" element={<InterviewNewPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-            <Route path="/reports/:id" element={<ReportDetailPage />} />
-            <Route path="/knowledge" element={<KnowledgePage />} />
-            <Route path="/skills" element={<SkillsPage />} />
-            <Route path="/matching" element={<MatchingPage />} />
-            <Route path="/expression" element={<ExpressionPage />} />
-            <Route path="/jobs" element={<JobsPage />} />
-            <Route path="/job-library" element={<JobLibraryPage />} />
-            <Route path="/resume" element={<ResumePage />} />
-            <Route path="/mistakes" element={<MistakesPage />} />
-            <Route path="/challenges" element={<ChallengesPage />} />
-            <Route path="/concerto" element={<ConcertoPage />} />
-            <Route path="/me" element={<MePage />} />
-          </Route>
-          <Route
-            path="/interview/preview"
-            element={
-              <RequireAuth>
-                <InterviewPreviewPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/interview/:id"
-            element={
-              <RequireAuth>
-                <InterviewSessionPage />
-              </RequireAuth>
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+            {/* 公开页面：首页、观澜之意、澜讯、认证 */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
+            <Route path="/announcements/tech-archive" element={<TechArchivePage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            {/* 工作台：全部需要登录（未登录访问时跳转 /auth 并记录来路） */}
+            <Route
+              element={
+                <RequireAuth>
+                  <AppLayout />
+                </RequireAuth>
+              }
+            >
+              <Route path="/app" element={<DashboardPage />} />
+              <Route path="/career-guide" element={<CareerGuidePage />} />
+              <Route path="/interview/new" element={<InterviewNewPage />} />
+              <Route path="/reports" element={<ReportsPage />} />
+              <Route path="/reports/:id" element={<ReportDetailPage />} />
+              <Route path="/knowledge" element={<KnowledgePage />} />
+              <Route path="/skills" element={<SkillsPage />} />
+              <Route path="/matching" element={<MatchingPage />} />
+              <Route path="/expression" element={<ExpressionPage />} />
+              <Route path="/jobs" element={<JobsPage />} />
+              <Route path="/job-library" element={<JobLibraryPage />} />
+              <Route path="/resume" element={<ResumePage />} />
+              <Route path="/mistakes" element={<MistakesPage />} />
+              <Route path="/challenges" element={<ChallengesPage />} />
+              <Route path="/concerto" element={<ConcertoPage />} />
+              <Route path="/me" element={<MePage />} />
+            </Route>
+            <Route
+              path="/interview/preview"
+              element={
+                <RequireAuth>
+                  <InterviewPreviewPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/interview/:id"
+              element={
+                <RequireAuth>
+                  <InterviewSessionPage />
+                </RequireAuth>
+              }
+            />
+            <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
         </OnboardingProvider>
       </AuthProvider>
     </MotionConfig>

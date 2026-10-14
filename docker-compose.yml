@@ -1,0 +1,43 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    environment:
+      ARK_API_KEY: ${ARK_API_KEY:-}
+      ARK_BASE_URL: ${ARK_BASE_URL:-https://ark.cn-beijing.volces.com/api/v3}
+      ARK_MODEL: ${ARK_MODEL:-}
+      # 容器内持久化数据库（卷挂载）
+      AUREL_DATABASE_URL: sqlite:////data/aurel.db
+      # 访问控制与限流（建议线上设置令牌）
+      AUREL_ACCESS_TOKEN: ${AUREL_ACCESS_TOKEN:-}
+      AUREL_RATE_LIMIT_PER_MINUTE: ${AUREL_RATE_LIMIT_PER_MINUTE:-120}
+      # T10 模型实验（不实验则留空）
+      LLM_EXPERIMENT_MODEL: ${LLM_EXPERIMENT_MODEL:-}
+      LLM_EXPERIMENT_PERCENT: ${LLM_EXPERIMENT_PERCENT:-0}
+      # 语音识别（可选）
+      ASR_PROVIDER: ${ASR_PROVIDER:-auto}
+      ASR_SILICONFLOW_API_KEY: ${ASR_SILICONFLOW_API_KEY:-}
+      ASR_LOCAL_MODEL: ${ASR_LOCAL_MODEL:-small}
+      HF_ENDPOINT: ${HF_ENDPOINT:-https://hf-mirror.com}
+    volumes:
+      - aurel-data:/data
+      # 本地 Whisper 模型缓存，避免重建容器重复下载
+      - aurel-hf-cache:/root/.cache/huggingface
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  aurel-data:
+  aurel-hf-cache:

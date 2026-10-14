@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!--
+    观澜 AUREL 品牌图形标志（原创矢量）：
+    圆角方印内的「海鸥掠过日出海平线」——
+    左上一只展翅的小鸥（AI 顾问「小鸥」），右上一枚远方日光点，
+    下方三层错落微澜；蓝色渐变底 + 白色负空间，24-32px 下依然可辨。
+    与 BrandMark.tsx / favicon.svg 同源，改动时三处同步。
+  -->
+  <defs>
+    <linearGradient id="bg" x1="24" y1="0" x2="24" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B92E2"/>
+      <stop offset="0.55" stop-color="#3E70BE"/>
+      <stop offset="1" stop-color="#2E5AA8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(33.5 13.5) scale(7.5)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="48" height="48" rx="13" fill="url(#bg)"/>
+  <!-- 远方日光：柔和不喧宾夺主 -->
+  <circle cx="33.5" cy="13.5" r="7.5" fill="url(#glow)"/>
+  <circle cx="33.5" cy="13.5" r="3.2" fill="#FFE9BE"/>
+  <!-- 小鸥：双翼舒展，朝日光方向远行 -->
+  <path d="M7 14.8 C10 10.6 14 10.6 16.8 13.6 C19.6 10.6 23.6 10.6 26.6 14.8" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+  <!-- 海平线与三层微澜：白色负空间，越近越淡 -->
+  <path d="M8 25.5c5.3-2.9 10.7-2.9 16 0s10.7 2.9 16 0" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M10 32.5c4.7-3.3 9.3-3.3 14 0s9.3 3.3 14 0" stroke="#DCEBFF" stroke-width="2.7" stroke-linecap="round" opacity="0.88"/>
+  <path d="M12 39c4-2.5 8-2.5 12 0s8 2.5 12 0" stroke="#BDD8FC" stroke-width="2.4" stroke-linecap="round" opacity="0.62"/>
+</svg>

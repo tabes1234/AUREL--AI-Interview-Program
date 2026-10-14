@@ -1,0 +1,18 @@
+# 观澜 AUREL 后端镜像（FastAPI + Uvicorn）
+# 构建上下文为仓库根目录：docker build -f Dockerfile.backend .
+FROM python:3.13-slim
+
+WORKDIR /app/backend
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+COPY backend/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY backend/app ./app
+COPY backend/migrations ./migrations
+COPY backend/alembic.ini ./alembic.ini
+
+EXPOSE 8000
+# 启动前先执行数据库迁移，再启动服务
+CMD ["sh", "-c", "alembic upgrade head && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000"]

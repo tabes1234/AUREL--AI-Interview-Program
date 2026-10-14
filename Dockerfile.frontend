@@ -1,0 +1,14 @@
+# 观澜 AUREL 前端镜像（Vite 构建 + Nginx 托管并反代 /api）
+# 构建上下文为仓库根目录：docker build -f Dockerfile.frontend .
+FROM node:24-alpine AS build
+
+WORKDIR /app/frontend
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/frontend/dist /usr/share/nginx/html
+COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80

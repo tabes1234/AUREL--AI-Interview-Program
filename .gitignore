@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+*.local
+
+# 环境变量与密钥
+.env
+.env.*
+!.env.example
+
+# 数据库与运行数据（T7 数据留存：不入库版本管理）
+*.db
+*.db-wal
+*.db-shm
+
+# 评测报告（含真实调用结果，按需本地留存）
+backend/eval/reports/*.json
+
+# IDE / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

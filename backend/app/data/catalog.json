@@ -1,0 +1,1506 @@
+{
+  "industries": [
+    { "id": "internet-software-ai", "name": "互联网、软件与人工智能" },
+    { "id": "data-cloud-security", "name": "数据科学、云计算与网络安全" },
+    { "id": "electronics-hardware-telecom", "name": "电子、硬件与通信" },
+    { "id": "finance-banking-insurance", "name": "金融、银行、证券与保险" },
+    { "id": "accounting-audit-tax", "name": "会计、审计、税务与财务" },
+    { "id": "consulting-strategy", "name": "咨询、战略与商业研究" },
+    { "id": "marketing-brand-pr", "name": "市场营销、品牌、公关与广告" },
+    { "id": "sales-bd-customersuccess", "name": "销售、商务拓展与客户成功" },
+    { "id": "hr-recruiting-org", "name": "人力资源、招聘与组织管理" },
+    { "id": "education-training-research", "name": "教育、培训与科研" },
+    { "id": "healthcare-pharma-lifesci", "name": "医疗、健康、医药与生命科学" },
+    { "id": "manufacturing-ie-quality", "name": "制造、工业工程与质量管理" },
+    { "id": "mechanical-electrical-robotics", "name": "机械、电气、自动化与机器人" },
+    { "id": "construction-realestate", "name": "建筑、土木与房地产" },
+    { "id": "energy-chemical-environment", "name": "能源、化工、环境与可持续发展" },
+    { "id": "procurement-logistics-supplychain", "name": "采购、物流、仓储与供应链" },
+    { "id": "retail-ecommerce-consumer", "name": "零售、电商与消费品运营" },
+    { "id": "media-publishing-content", "name": "媒体、影视、出版与内容创作" },
+    { "id": "design-ux-animation-game", "name": "平面设计、UI/UX、动画、游戏与数字艺术" },
+    { "id": "legal-compliance-ip", "name": "法律、合规、知识产权与风险管理" },
+    { "id": "public-social-services", "name": "公共服务与社会服务" },
+    { "id": "hospitality-tourism-fnb", "name": "酒店、旅游、餐饮与会展" },
+    { "id": "agriculture-food", "name": "农业、食品科学与现代农业" },
+    { "id": "automotive-transport-aviation", "name": "汽车、交通、航空与运输工程" }
+  ],
+  "occupations": [
+    {
+      "id": "internet-software-ai.backend-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "后端开发工程师",
+      "aliases": ["服务端工程师", "Backend Engineer"],
+      "core_skills": ["服务端架构设计", "数据库设计与调优", "高并发与缓存"],
+      "dimensions": ["技术深度", "系统设计", "工程决策"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.frontend-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "前端开发工程师",
+      "aliases": ["Web 前端工程师"],
+      "core_skills": ["HTML/CSS 与浏览器原理", "现代前端框架", "页面性能优化"],
+      "dimensions": ["技术深度", "用户体验", "调试能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.mobile-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "移动端开发工程师",
+      "aliases": ["Android/iOS 工程师", "客户端工程师"],
+      "core_skills": ["移动端 UI 与交互实现", "网络与离线策略", "包体积与性能优化"],
+      "dimensions": ["技术深度", "工程实践", "性能意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.fullstack-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "全栈工程师",
+      "aliases": ["Full-stack Engineer"],
+      "core_skills": ["前后端联调", "API 设计", "部署与运维基础"],
+      "dimensions": ["技术广度", "端到端交付", "协作沟通"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.ml-algorithm-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "机器学习算法工程师",
+      "aliases": ["算法工程师"],
+      "core_skills": ["机器学习理论", "特征工程", "模型调优与评估"],
+      "dimensions": ["算法功底", "数据理解", "实验严谨性"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.llm-application-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "大模型应用工程师",
+      "aliases": ["LLM 工程师", "AIGC 应用工程师"],
+      "core_skills": ["提示词工程", "RAG 检索增强", "模型评估与对齐"],
+      "dimensions": ["算法功底", "工程落地", "效果评估"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.qa-test-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "测试开发工程师",
+      "aliases": ["QA 工程师", "测试工程师"],
+      "core_skills": ["测试用例设计", "自动化测试框架", "缺陷分析与质量度量"],
+      "dimensions": ["质量意识", "自动化能力", "风险识别"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.devops-engineer",
+      "industry_id": "internet-software-ai",
+      "name": "运维开发工程师",
+      "aliases": ["DevOps 工程师"],
+      "core_skills": ["CI/CD 流水线", "容器与编排", "监控告警体系"],
+      "dimensions": ["系统运维", "自动化能力", "稳定性思维"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.product-manager",
+      "industry_id": "internet-software-ai",
+      "name": "产品经理",
+      "aliases": ["PM", "互联网产品经理"],
+      "core_skills": ["需求分析与优先级", "产品方案设计", "数据驱动迭代"],
+      "dimensions": ["产品思维", "需求洞察", "跨端协同"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "internet-software-ai.solution-architect",
+      "industry_id": "internet-software-ai",
+      "name": "系统架构师",
+      "aliases": ["架构师"],
+      "core_skills": ["架构演进与权衡", "技术选型", "可用性与扩展性设计"],
+      "dimensions": ["架构视野", "权衡决策", "技术判断力"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "internet-software-ai.game-client-developer",
+      "industry_id": "internet-software-ai",
+      "name": "游戏客户端开发工程师",
+      "aliases": ["游戏开发工程师"],
+      "core_skills": ["游戏引擎使用", "渲染与优化", "玩法逻辑实现"],
+      "dimensions": ["技术深度", "性能优化", "玩法实现"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "internet-software-ai.miniapp-developer",
+      "industry_id": "internet-software-ai",
+      "name": "小程序开发工程师",
+      "aliases": ["小程序工程师"],
+      "core_skills": ["小程序框架", "跨端适配", "生态 API 集成"],
+      "dimensions": ["技术深度", "适配能力", "交付效率"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "data-cloud-security.data-analyst",
+      "industry_id": "data-cloud-security",
+      "name": "数据分析师",
+      "aliases": ["Data Analyst"],
+      "core_skills": ["SQL 与数据提取", "统计分析", "可视化与报告"],
+      "dimensions": ["数据敏感度", "分析严谨性", "业务解读"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "data-cloud-security.data-engineer",
+      "industry_id": "data-cloud-security",
+      "name": "数据工程师",
+      "aliases": ["Data Engineer"],
+      "core_skills": ["数据管道建设", "数仓建模", "调度与数据治理"],
+      "dimensions": ["数据架构", "工程质量", "数据质量意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "data-cloud-security.data-scientist",
+      "industry_id": "data-cloud-security",
+      "name": "数据科学家",
+      "aliases": ["Data Scientist"],
+      "core_skills": ["统计建模", "实验设计与 A/B 测试", "机器学习应用"],
+      "dimensions": ["统计功底", "实验思维", "落地转化"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "data-cloud-security.bigdata-developer",
+      "industry_id": "data-cloud-security",
+      "name": "大数据开发工程师",
+      "aliases": ["大数据工程师"],
+      "core_skills": ["Hadoop/Spark 生态", "实时计算", "海量数据优化"],
+      "dimensions": ["数据架构", "性能调优", "工程实践"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "data-cloud-security.cloud-engineer",
+      "industry_id": "data-cloud-security",
+      "name": "云计算工程师",
+      "aliases": ["云平台工程师"],
+      "core_skills": ["云原生架构", "基础设施即代码", "成本与容量规划"],
+      "dimensions": ["云平台能力", "自动化", "成本意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "data-cloud-security.cybersecurity-engineer",
+      "industry_id": "data-cloud-security",
+      "name": "网络安全工程师",
+      "aliases": ["渗透测试工程师"],
+      "core_skills": ["渗透测试", "安全加固", "漏洞分析"],
+      "dimensions": ["攻防技术", "风险识别", "合规意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "data-cloud-security.soc-analyst",
+      "industry_id": "data-cloud-security",
+      "name": "安全运营分析师",
+      "aliases": ["安全运营工程师", "SOC 分析师"],
+      "core_skills": ["威胁监测与研判", "应急响应", "安全日志分析"],
+      "dimensions": ["威胁研判", "响应速度", "流程规范"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "data-cloud-security.sre-engineer",
+      "industry_id": "data-cloud-security",
+      "name": "站点可靠性工程师",
+      "aliases": ["SRE"],
+      "core_skills": ["可用性工程", "故障演练与复盘", "容量规划"],
+      "dimensions": ["稳定性思维", "应急处理", "流程建设"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "data-cloud-security.ml-platform-engineer",
+      "industry_id": "data-cloud-security",
+      "name": "机器学习平台工程师",
+      "aliases": ["AI 平台工程师"],
+      "core_skills": ["特征平台建设", "模型服务化", "训练资源调度"],
+      "dimensions": ["平台工程", "系统设计", "资源效率"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.hardware-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "硬件工程师",
+      "aliases": ["Hardware Engineer"],
+      "core_skills": ["原理图与 PCB 设计", "器件选型", "信号完整性"],
+      "dimensions": ["硬件功底", "调试能力", "成本意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.embedded-software-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "嵌入式软件工程师",
+      "aliases": ["嵌入式工程师"],
+      "core_skills": ["RTOS 与裸机开发", "外设驱动", "低功耗设计"],
+      "dimensions": ["底层功底", "资源约束设计", "调试能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.chip-design-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "芯片设计工程师",
+      "aliases": ["IC 设计工程师"],
+      "core_skills": ["数字/模拟电路设计", "验证方法学", "时序分析"],
+      "dimensions": ["电路功底", "验证严谨性", "工具链熟练度"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.fpga-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "FPGA 工程师",
+      "aliases": [],
+      "core_skills": ["HDL 编码", "时序约束", "原型验证"],
+      "dimensions": ["硬件描述能力", "时序思维", "调试能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.telecom-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "通信工程师",
+      "aliases": [],
+      "core_skills": ["无线通信原理", "网络规划", "协议分析"],
+      "dimensions": ["通信原理", "网络设计", "问题定位"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.rf-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "射频工程师",
+      "aliases": ["RF 工程师"],
+      "core_skills": ["射频电路设计", "天线调优", "阻抗匹配"],
+      "dimensions": ["射频功底", "测量能力", "调试经验"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.semiconductor-process-engineer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "半导体工艺工程师",
+      "aliases": [],
+      "core_skills": ["晶圆制造工艺", "良率提升", "工艺整合"],
+      "dimensions": ["工艺理解", "数据分析", "良率思维"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "electronics-hardware-telecom.telecom-network-optimizer",
+      "industry_id": "electronics-hardware-telecom",
+      "name": "电信网络优化工程师",
+      "aliases": ["网优工程师"],
+      "core_skills": ["路测数据分析", "覆盖优化", "参数调整"],
+      "dimensions": ["网络指标", "问题定位", "现场经验"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "finance-banking-insurance.securities-analyst",
+      "industry_id": "finance-banking-insurance",
+      "name": "证券分析师",
+      "aliases": ["行业研究员"],
+      "core_skills": ["行业与公司研究", "财务模型", "估值方法"],
+      "dimensions": ["研究深度", "判断独立性", "报告表达"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "finance-banking-insurance.investment-banking-analyst",
+      "industry_id": "finance-banking-insurance",
+      "name": "投资银行分析师",
+      "aliases": ["IBD 分析师"],
+      "core_skills": ["尽调与材料制作", "交易结构设计", "财务分析"],
+      "dimensions": ["专业功底", "执行力", "抗压能力"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "finance-banking-insurance.bank-relationship-manager",
+      "industry_id": "finance-banking-insurance",
+      "name": "银行客户经理",
+      "aliases": ["对公/零售客户经理"],
+      "core_skills": ["客户需求挖掘", "信贷产品方案", "业绩目标管理"],
+      "dimensions": ["客户经营", "风险意识", "目标达成"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "finance-banking-insurance.risk-control-manager",
+      "industry_id": "finance-banking-insurance",
+      "name": "风控经理",
+      "aliases": ["风险管理经理"],
+      "core_skills": ["风险识别与计量", "授信策略", "反欺诈"],
+      "dimensions": ["风险判断", "策略能力", "合规意识"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "finance-banking-insurance.quant-researcher",
+      "industry_id": "finance-banking-insurance",
+      "name": "量化研究员",
+      "aliases": ["量化分析师"],
+      "core_skills": ["因子研究", "回测框架", "统计套利"],
+      "dimensions": ["数理功底", "研究严谨性", "工程实现"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "finance-banking-insurance.actuary",
+      "industry_id": "finance-banking-insurance",
+      "name": "保险精算师",
+      "aliases": ["精算师"],
+      "core_skills": ["精算模型", "准备金评估", "产品定价"],
+      "dimensions": ["数理基础", "审慎性", "监管理解"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "finance-banking-insurance.credit-officer",
+      "industry_id": "finance-banking-insurance",
+      "name": "信贷审批员",
+      "aliases": ["信贷审阅岗"],
+      "core_skills": ["财务报表分析", "授信审查", "风险缓释"],
+      "dimensions": ["风险判断", "报表功底", "独立意见"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "finance-banking-insurance.wealth-management-advisor",
+      "industry_id": "finance-banking-insurance",
+      "name": "财富管理顾问",
+      "aliases": ["理财顾问"],
+      "core_skills": ["资产配置", "客户经营", "合规销售"],
+      "dimensions": ["专业服务", "客户洞察", "合规底线"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "finance-banking-insurance.fintech-product-manager",
+      "industry_id": "finance-banking-insurance",
+      "name": "金融产品经理",
+      "aliases": ["金融科技产品经理"],
+      "core_skills": ["金融合规", "支付与信贷链路", "风控协同"],
+      "dimensions": ["产品思维", "合规意识", "跨界协同"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "accounting-audit-tax.accountant",
+      "industry_id": "accounting-audit-tax",
+      "name": "会计",
+      "aliases": ["总账会计", "会计专员"],
+      "core_skills": ["账务处理", "报表编制", "税务申报基础"],
+      "dimensions": ["专业规范", "细致度", "准则理解"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "accounting-audit-tax.auditor",
+      "industry_id": "accounting-audit-tax",
+      "name": "审计师",
+      "aliases": ["审计专员"],
+      "core_skills": ["审计程序执行", "内控测试", "底稿编制"],
+      "dimensions": ["职业怀疑", "证据意识", "准则应用"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "accounting-audit-tax.tax-specialist",
+      "industry_id": "accounting-audit-tax",
+      "name": "税务专员",
+      "aliases": ["税务师"],
+      "core_skills": ["税收法规", "纳税筹划", "税务申报"],
+      "dimensions": ["税法功底", "筹划能力", "合规意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "accounting-audit-tax.financial-analyst",
+      "industry_id": "accounting-audit-tax",
+      "name": "财务分析师",
+      "aliases": ["FP&A 分析师"],
+      "core_skills": ["预算与预测", "经营分析", "管理报告"],
+      "dimensions": ["业务理解", "分析深度", "表达呈现"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "accounting-audit-tax.finance-manager",
+      "industry_id": "accounting-audit-tax",
+      "name": "财务经理",
+      "aliases": ["财务负责人"],
+      "core_skills": ["财务团队管理", "资金与预算管控", "业财融合"],
+      "dimensions": ["管理能力", "风险控制", "经营视角"],
+      "recommended_type": "leadership"
+    },
+    {
+      "id": "accounting-audit-tax.cost-accountant",
+      "industry_id": "accounting-audit-tax",
+      "name": "成本会计",
+      "aliases": ["成本管理会计"],
+      "core_skills": ["成本核算", "存货管理", "成本分析与降本"],
+      "dimensions": ["核算准确", "业务穿透", "改善建议"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "accounting-audit-tax.treasury-specialist",
+      "industry_id": "accounting-audit-tax",
+      "name": "资金管理专员",
+      "aliases": ["资金专员"],
+      "core_skills": ["现金流管理", "融资安排", "外汇风险对冲"],
+      "dimensions": ["资金安全", "统筹能力", "市场敏感度"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "consulting-strategy.management-consultant",
+      "industry_id": "consulting-strategy",
+      "name": "管理咨询顾问",
+      "aliases": ["咨询顾问"],
+      "core_skills": ["结构化问题拆解", "访谈与调研", "方案汇报"],
+      "dimensions": ["结构化思维", "沟通影响", "交付质量"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "consulting-strategy.strategy-analyst",
+      "industry_id": "consulting-strategy",
+      "name": "战略分析师",
+      "aliases": [],
+      "core_skills": ["行业与竞争分析", "战略规划", "商业模式评估"],
+      "dimensions": ["商业洞察", "分析框架", "前瞻判断"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "consulting-strategy.business-analyst",
+      "industry_id": "consulting-strategy",
+      "name": "商业分析师",
+      "aliases": ["BA"],
+      "core_skills": ["数据驱动洞察", "流程优化", "需求文档撰写"],
+      "dimensions": ["分析能力", "落地建议", "跨部门沟通"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "consulting-strategy.due-diligence-analyst",
+      "industry_id": "consulting-strategy",
+      "name": "尽职调查分析师",
+      "aliases": ["尽调分析师"],
+      "core_skills": ["财务与业务尽调", "风险识别", "报告撰写"],
+      "dimensions": ["审慎性", "信息挖掘", "结论支撑"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "consulting-strategy.market-research-analyst",
+      "industry_id": "consulting-strategy",
+      "name": "市场研究分析师",
+      "aliases": [],
+      "core_skills": ["定性定量研究", "问卷设计", "竞品追踪"],
+      "dimensions": ["研究方法", "数据解读", "洞察输出"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "marketing-brand-pr.marketing-specialist",
+      "industry_id": "marketing-brand-pr",
+      "name": "市场专员",
+      "aliases": ["市场营销专员"],
+      "core_skills": ["市场活动执行", "渠道投放", "效果复盘"],
+      "dimensions": ["执行落地", "效果导向", "创意能力"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "marketing-brand-pr.brand-manager",
+      "industry_id": "marketing-brand-pr",
+      "name": "品牌经理",
+      "aliases": [],
+      "core_skills": ["品牌定位", "传播策略", "跨部门协同"],
+      "dimensions": ["品牌思维", "策略能力", "资源统筹"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "marketing-brand-pr.pr-specialist",
+      "industry_id": "marketing-brand-pr",
+      "name": "公关专员",
+      "aliases": ["PR 专员"],
+      "core_skills": ["媒体关系", "舆情应对", "稿件撰写"],
+      "dimensions": ["危机应对", "文字功底", "关系管理"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "marketing-brand-pr.ad-optimizer",
+      "industry_id": "marketing-brand-pr",
+      "name": "广告投放优化师",
+      "aliases": ["投放优化师"],
+      "core_skills": ["投放平台操作", "素材与出价优化", "ROI 分析"],
+      "dimensions": ["数据敏感度", "优化能力", "平台理解"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "marketing-brand-pr.content-marketing-manager",
+      "industry_id": "marketing-brand-pr",
+      "name": "内容营销经理",
+      "aliases": [],
+      "core_skills": ["内容策略", "选题策划", "转化漏斗优化"],
+      "dimensions": ["内容品味", "策略能力", "效果衡量"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "marketing-brand-pr.social-media-operator",
+      "industry_id": "marketing-brand-pr",
+      "name": "新媒体运营",
+      "aliases": ["新媒体编辑"],
+      "core_skills": ["平台运营", "爆款内容方法论", "粉丝增长"],
+      "dimensions": ["内容手感", "数据复盘", "网感"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "marketing-brand-pr.event-planner",
+      "industry_id": "marketing-brand-pr",
+      "name": "活动策划",
+      "aliases": ["活动运营"],
+      "core_skills": ["活动方案设计", "预算管理", "现场执行"],
+      "dimensions": ["策划能力", "执行细节", "应变能力"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "sales-bd-customersuccess.sales-representative",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "销售代表",
+      "aliases": ["销售专员"],
+      "core_skills": ["客户开发", "需求挖掘", "商务谈判"],
+      "dimensions": ["目标感", "沟通能力", "抗压韧性"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "sales-bd-customersuccess.key-account-manager",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "大客户经理",
+      "aliases": ["KA 经理"],
+      "core_skills": ["大客户策略", "关系维护", "方案式销售"],
+      "dimensions": ["客户策略", "长期经营", "方案能力"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "sales-bd-customersuccess.business-development-manager",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "商务拓展经理",
+      "aliases": ["BD 经理"],
+      "core_skills": ["渠道与伙伴拓展", "商务合作设计", "谈判签约"],
+      "dimensions": ["资源拓展", "商务判断", "谈判能力"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "sales-bd-customersuccess.customer-success-manager",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "客户成功经理",
+      "aliases": ["CSM"],
+      "core_skills": ["客户健康度管理", "续约与增购", "交付协同"],
+      "dimensions": ["服务意识", "数据驱动", "价值传递"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "sales-bd-customersuccess.channel-sales-manager",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "渠道销售经理",
+      "aliases": ["渠道经理"],
+      "core_skills": ["经销商管理", "渠道政策设计", "业绩达成"],
+      "dimensions": ["渠道运营", "利益平衡", "管理能力"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "sales-bd-customersuccess.telesales-specialist",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "电话销售专员",
+      "aliases": ["电销专员"],
+      "core_skills": ["电话沟通技巧", "名单管理", "快速成交"],
+      "dimensions": ["沟通技巧", "抗压力", "成交效率"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "sales-bd-customersuccess.pre-sales-engineer",
+      "industry_id": "sales-bd-customersuccess",
+      "name": "售前工程师",
+      "aliases": ["售前顾问"],
+      "core_skills": ["方案讲解与演示", "需求引导", "投标支持"],
+      "dimensions": ["技术表达", "需求转化", "临场应变"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "hr-recruiting-org.recruiter",
+      "industry_id": "hr-recruiting-org",
+      "name": "招聘专员",
+      "aliases": ["招聘经理", "HR 招聘"],
+      "core_skills": ["人才搜寻与评估", "面试技巧", "渠道运营"],
+      "dimensions": ["识人能力", "沟通协调", "效率意识"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "hr-recruiting-org.hrbp",
+      "industry_id": "hr-recruiting-org",
+      "name": "HRBP",
+      "aliases": ["人力资源业务伙伴"],
+      "core_skills": ["业务理解与诊断", "员工关系", "组织变革支持"],
+      "dimensions": ["业务视角", "关系处理", "方案能力"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "hr-recruiting-org.ld-manager",
+      "industry_id": "hr-recruiting-org",
+      "name": "培训与发展经理",
+      "aliases": ["TD 经理"],
+      "core_skills": ["培训体系设计", "人才发展", "效果评估"],
+      "dimensions": ["体系设计", "人才判断", "运营落地"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "hr-recruiting-org.c-b-specialist",
+      "industry_id": "hr-recruiting-org",
+      "name": "薪酬绩效专员",
+      "aliases": ["C&B 专员"],
+      "core_skills": ["薪酬体系设计", "绩效管理", "人力数据分析"],
+      "dimensions": ["专业严谨", "数据能力", "制度理解"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "hr-recruiting-org.od-consultant",
+      "industry_id": "hr-recruiting-org",
+      "name": "组织发展顾问",
+      "aliases": ["OD 顾问"],
+      "core_skills": ["组织诊断", "干部管理", "文化落地"],
+      "dimensions": ["组织洞察", "变革推动", "方法论"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "hr-recruiting-org.er-specialist",
+      "industry_id": "hr-recruiting-org",
+      "name": "员工关系专员",
+      "aliases": ["ER 专员"],
+      "core_skills": ["劳动法规应用", "入离职管理", "劳动争议处理"],
+      "dimensions": ["合规意识", "沟通处理", "风险预判"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "education-training-research.school-teacher",
+      "industry_id": "education-training-research",
+      "name": "中小学教师",
+      "aliases": ["教师"],
+      "core_skills": ["教学设计", "课堂管理", "学情分析"],
+      "dimensions": ["教学基本功", "育人理念", "因材施教"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "education-training-research.corporate-trainer",
+      "industry_id": "education-training-research",
+      "name": "企业培训讲师",
+      "aliases": ["内训师"],
+      "core_skills": ["课程讲授", "成人学习设计", "现场控场"],
+      "dimensions": ["表达感染力", "课程开发", "现场应变"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "education-training-research.instructional-designer",
+      "industry_id": "education-training-research",
+      "name": "课程设计师",
+      "aliases": ["教学设计师"],
+      "core_skills": ["课程体系设计", "教学内容开发", "学习效果评估"],
+      "dimensions": ["教学设计能力", "内容组织", "评估意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "education-training-research.education-product-operator",
+      "industry_id": "education-training-research",
+      "name": "教育产品运营",
+      "aliases": [],
+      "core_skills": ["学习转化提升", "用户增长", "内容运营"],
+      "dimensions": ["用户理解", "转化思维", "数据复盘"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "education-training-research.research-scientist",
+      "industry_id": "education-training-research",
+      "name": "科研人员",
+      "aliases": ["研究员"],
+      "core_skills": ["研究设计", "文献与实验", "论文撰写"],
+      "dimensions": ["科研素养", "严谨性", "学术表达"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "education-training-research.academic-affairs-officer",
+      "industry_id": "education-training-research",
+      "name": "教务管理人员",
+      "aliases": ["教务专员"],
+      "core_skills": ["教学排期", "质量监控", "师资协调"],
+      "dimensions": ["统筹能力", "细致度", "协调沟通"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "education-training-research.student-counselor",
+      "industry_id": "education-training-research",
+      "name": "高校辅导员",
+      "aliases": ["辅导员"],
+      "core_skills": ["学生工作", "谈心谈话", "危机干预"],
+      "dimensions": ["共情能力", "责任意识", "应急处理"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.registered-nurse",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "护士",
+      "aliases": ["注册护士"],
+      "core_skills": ["临床护理操作", "病情观察", "医患沟通"],
+      "dimensions": ["专业技能", "责任心", "人文关怀"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.cra",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "临床监查员",
+      "aliases": ["CRA"],
+      "core_skills": ["临床试验监查", "GCP 规范", "数据核查"],
+      "dimensions": ["规范执行", "细致度", "沟通协调"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.medical-representative",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "医药代表",
+      "aliases": [],
+      "core_skills": ["产品知识", "医院客户维护", "学术推广"],
+      "dimensions": ["专业素养", "客户经营", "合规底线"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.drug-research-scientist",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "药品研发工程师",
+      "aliases": ["药物研发科学家"],
+      "core_skills": ["药物设计", "实验方案设计", "注册申报资料"],
+      "dimensions": ["研发能力", "实验严谨", "法规意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.medical-device-regulatory",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "医疗器械注册专员",
+      "aliases": ["RA 专员"],
+      "core_skills": ["注册法规", "技术文档撰写", "体系审核配合"],
+      "dimensions": ["法规理解", "文档能力", "流程管理"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.public-health-specialist",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "公共卫生专员",
+      "aliases": [],
+      "core_skills": ["流行病学调查", "健康教育", "数据监测"],
+      "dimensions": ["公卫思维", "数据处理", "现场组织"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.dietitian",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "营养师",
+      "aliases": ["临床营养师"],
+      "core_skills": ["营养评估", "膳食方案设计", "健康咨询"],
+      "dimensions": ["专业咨询", "个性化方案", "沟通能力"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "healthcare-pharma-lifesci.hospital-administrator",
+      "industry_id": "healthcare-pharma-lifesci",
+      "name": "医院运营管理专员",
+      "aliases": ["医院行政专员"],
+      "core_skills": ["医疗流程优化", "绩效与质控", "资源协调"],
+      "dimensions": ["运营分析", "协调能力", "服务意识"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "manufacturing-ie-quality.quality-engineer",
+      "industry_id": "manufacturing-ie-quality",
+      "name": "质量工程师",
+      "aliases": ["QE"],
+      "core_skills": ["质量体系", "SPC 统计过程控制", "不合格品分析"],
+      "dimensions": ["质量思维", "数据分析", "闭环改善"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "manufacturing-ie-quality.industrial-engineer",
+      "industry_id": "manufacturing-ie-quality",
+      "name": "工业工程师",
+      "aliases": ["IE 工程师"],
+      "core_skills": ["流程改善", "产能规划", "精益工具应用"],
+      "dimensions": ["效率思维", "数据量化", "改善落地"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "manufacturing-ie-quality.production-planner",
+      "industry_id": "manufacturing-ie-quality",
+      "name": "生产计划员",
+      "aliases": ["PMC 专员"],
+      "core_skills": ["排产计划", "物料需求核算", "交付协调"],
+      "dimensions": ["计划能力", "异常处理", "跨部门协调"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "manufacturing-ie-quality.lean-engineer",
+      "industry_id": "manufacturing-ie-quality",
+      "name": "精益生产工程师",
+      "aliases": ["精益工程师"],
+      "core_skills": ["精益改善项目", "价值流分析", "现场管理"],
+      "dimensions": ["改善方法", "现场洞察", "变革推动"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "manufacturing-ie-quality.process-engineer",
+      "industry_id": "manufacturing-ie-quality",
+      "name": "工艺工程师",
+      "aliases": [],
+      "core_skills": ["工艺设计", "参数优化", "工艺文件编制"],
+      "dimensions": ["工艺功底", "实验设计", "标准化意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "manufacturing-ie-quality.equipment-engineer",
+      "industry_id": "manufacturing-ie-quality",
+      "name": "设备工程师",
+      "aliases": ["设备维护工程师"],
+      "core_skills": ["设备维护保养", "TPM 管理", "故障分析"],
+      "dimensions": ["设备原理", "预防思维", "动手能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.mechanical-design-engineer",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "机械设计工程师",
+      "aliases": ["机械工程师"],
+      "core_skills": ["机械结构设计", "三维建模", "公差配合"],
+      "dimensions": ["设计能力", "工艺可行性", "标准规范"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.electrical-engineer",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "电气工程师",
+      "aliases": [],
+      "core_skills": ["电气原理设计", "PLC 与配电", "现场调试"],
+      "dimensions": ["电气功底", "安全意识", "调试能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.automation-engineer",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "自动化工程师",
+      "aliases": [],
+      "core_skills": ["控制系统集成", "传感器选型", "调试优化"],
+      "dimensions": ["系统集成", "调试经验", "方案设计"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.robotics-algorithm-engineer",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "机器人算法工程师",
+      "aliases": [],
+      "core_skills": ["运动控制", "SLAM 与导航", "路径规划"],
+      "dimensions": ["算法功底", "仿真与实机", "跨学科整合"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.plc-engineer",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "PLC 工程师",
+      "aliases": [],
+      "core_skills": ["PLC 编程", "电气图纸识读", "产线联调"],
+      "dimensions": ["编程能力", "现场经验", "故障排查"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.structural-engineer-cae",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "结构仿真工程师",
+      "aliases": ["CAE 工程师"],
+      "core_skills": ["有限元分析", "疲劳与强度评估", "仿真报告"],
+      "dimensions": ["力学基础", "仿真判断", "报告严谨性"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "mechanical-electrical-robotics.mechatronics-project-engineer",
+      "industry_id": "mechanical-electrical-robotics",
+      "name": "机电项目工程师",
+      "aliases": [],
+      "core_skills": ["机电安装管理", "进度与质量控制", "验收交付"],
+      "dimensions": ["项目管理", "现场协调", "风险控制"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "construction-realestate.architect",
+      "industry_id": "construction-realestate",
+      "name": "建筑设计师",
+      "aliases": ["建筑师"],
+      "core_skills": ["方案设计", "规范与报批", "设计协调"],
+      "dimensions": ["设计创意", "规范意识", "沟通推进"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "construction-realestate.civil-engineer",
+      "industry_id": "construction-realestate",
+      "name": "土木工程师",
+      "aliases": ["施工员"],
+      "core_skills": ["施工组织", "质量安全控制", "图纸会审"],
+      "dimensions": ["现场经验", "规范执行", "问题处理"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "construction-realestate.cost-engineer",
+      "industry_id": "construction-realestate",
+      "name": "造价工程师",
+      "aliases": ["造价员"],
+      "core_skills": ["工程量计算", "清单计价", "结算审核"],
+      "dimensions": ["算量精度", "成本意识", "审核严谨"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "construction-realestate.construction-project-manager",
+      "industry_id": "construction-realestate",
+      "name": "施工项目经理",
+      "aliases": ["项目经理"],
+      "core_skills": ["项目管理", "分包协调", "成本进度控制"],
+      "dimensions": ["统筹管理", "风险控制", "团队领导"],
+      "recommended_type": "leadership"
+    },
+    {
+      "id": "construction-realestate.supervision-engineer",
+      "industry_id": "construction-realestate",
+      "name": "监理工程师",
+      "aliases": ["监理员"],
+      "core_skills": ["旁站监理", "验收管理", "资料审核"],
+      "dimensions": ["原则性", "规范理解", "记录规范"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "construction-realestate.real-estate-planner",
+      "industry_id": "construction-realestate",
+      "name": "房地产策划",
+      "aliases": ["地产策划"],
+      "core_skills": ["项目定位", "营销策划", "市场研判"],
+      "dimensions": ["市场敏感度", "策划创意", "落地执行"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "energy-chemical-environment.chemical-process-engineer",
+      "industry_id": "energy-chemical-environment",
+      "name": "化工工艺工程师",
+      "aliases": ["工艺工程师（化工）"],
+      "core_skills": ["工艺流程设计", "危险与可操作性分析", "装置调试"],
+      "dimensions": ["工艺理解", "安全意识", "开车经验"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "energy-chemical-environment.new-energy-engineer",
+      "industry_id": "energy-chemical-environment",
+      "name": "新能源工程师",
+      "aliases": [],
+      "core_skills": ["光伏/风电系统", "项目开发", "并网技术"],
+      "dimensions": ["能源技术", "项目管理", "政策理解"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "energy-chemical-environment.environmental-engineer",
+      "industry_id": "energy-chemical-environment",
+      "name": "环境工程师",
+      "aliases": ["环保工程师"],
+      "core_skills": ["三废治理", "环评报告编制", "排放治理"],
+      "dimensions": ["治理技术", "法规应用", "方案设计"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "energy-chemical-environment.hse-engineer",
+      "industry_id": "energy-chemical-environment",
+      "name": "HSE 工程师",
+      "aliases": ["安全工程师（HSE）"],
+      "core_skills": ["安全管理体系", "隐患排查", "应急预案"],
+      "dimensions": ["安全意识", "体系执行", "应急能力"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "energy-chemical-environment.battery-rd-engineer",
+      "industry_id": "energy-chemical-environment",
+      "name": "电池研发工程师",
+      "aliases": [],
+      "core_skills": ["电化学体系", "电芯设计", "测试验证"],
+      "dimensions": ["电化学功底", "研发严谨", "失效分析"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "energy-chemical-environment.esg-analyst",
+      "industry_id": "energy-chemical-environment",
+      "name": "ESG 分析师",
+      "aliases": [],
+      "core_skills": ["ESG 披露框架", "碳核算", "评级研究"],
+      "dimensions": ["可持续认知", "数据核算", "报告能力"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "energy-chemical-environment.energy-audit-specialist",
+      "industry_id": "energy-chemical-environment",
+      "name": "能源管理专员",
+      "aliases": ["能源审计员"],
+      "core_skills": ["能源审计", "节能改造评估", "能耗监测"],
+      "dimensions": ["节能技术", "数据分析", "标准应用"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "procurement-logistics-supplychain.procurement-specialist",
+      "industry_id": "procurement-logistics-supplychain",
+      "name": "采购专员",
+      "aliases": ["采购员"],
+      "core_skills": ["供应商寻源", "询比价与谈判", "合同管理"],
+      "dimensions": ["成本意识", "谈判能力", "合规廉洁"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "procurement-logistics-supplychain.logistics-specialist",
+      "industry_id": "procurement-logistics-supplychain",
+      "name": "物流专员",
+      "aliases": [],
+      "core_skills": ["运输方案设计", "时效管理", "物流成本控制"],
+      "dimensions": ["执行落地", "异常处理", "成本优化"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "procurement-logistics-supplychain.supply-chain-planner",
+      "industry_id": "procurement-logistics-supplychain",
+      "name": "供应链计划员",
+      "aliases": ["计划专员"],
+      "core_skills": ["需求预测", "库存策略", "S&OP 协同"],
+      "dimensions": ["计划能力", "数据建模", "跨部门协同"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "procurement-logistics-supplychain.warehouse-operations-supervisor",
+      "industry_id": "procurement-logistics-supplychain",
+      "name": "仓储运营主管",
+      "aliases": ["仓库主管"],
+      "core_skills": ["仓内作业管理", "库存准确率提升", "团队排班"],
+      "dimensions": ["现场管理", "流程优化", "团队管理"],
+      "recommended_type": "leadership"
+    },
+    {
+      "id": "procurement-logistics-supplychain.customs-specialist",
+      "industry_id": "procurement-logistics-supplychain",
+      "name": "关务专员",
+      "aliases": ["报关员"],
+      "core_skills": ["进出口报关", "税则归类", "合规审查"],
+      "dimensions": ["法规熟悉度", "单证严谨", "风险意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "procurement-logistics-supplychain.sqe-engineer",
+      "industry_id": "procurement-logistics-supplychain",
+      "name": "供应商质量管理工程师",
+      "aliases": ["SQE"],
+      "core_skills": ["供应商审核", "来料质量改善", "8D 报告推动"],
+      "dimensions": ["质量体系", "供应商管理", "改善闭环"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "retail-ecommerce-consumer.ecommerce-operations",
+      "industry_id": "retail-ecommerce-consumer",
+      "name": "电商运营",
+      "aliases": ["电商运营专员"],
+      "core_skills": ["店铺运营", "大促活动策划", "数据复盘"],
+      "dimensions": ["GMV 导向", "数据能力", "活动运营"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "retail-ecommerce-consumer.retail-store-manager",
+      "industry_id": "retail-ecommerce-consumer",
+      "name": "零售门店店长",
+      "aliases": ["门店店长"],
+      "core_skills": ["门店经营指标", "陈列与促销", "团队管理"],
+      "dimensions": ["经营意识", "团队带教", "客户服务"],
+      "recommended_type": "leadership"
+    },
+    {
+      "id": "retail-ecommerce-consumer.merchandise-planner",
+      "industry_id": "retail-ecommerce-consumer",
+      "name": "商品计划员",
+      "aliases": ["商品企划"],
+      "core_skills": ["商品企划", "采购预算", "售罄率管理"],
+      "dimensions": ["商品 sense", "数据建模", "季节节奏"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "retail-ecommerce-consumer.user-operations",
+      "industry_id": "retail-ecommerce-consumer",
+      "name": "用户运营",
+      "aliases": [],
+      "core_skills": ["用户分层运营", "留存活动设计", "生命周期管理"],
+      "dimensions": ["用户洞察", "活动设计", "数据驱动"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "retail-ecommerce-consumer.livestream-operations",
+      "industry_id": "retail-ecommerce-consumer",
+      "name": "直播运营",
+      "aliases": [],
+      "core_skills": ["直播策划", "场控与话术设计", "数据复盘"],
+      "dimensions": ["节奏把控", "转化思维", "临场应变"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "retail-ecommerce-consumer.buyer",
+      "industry_id": "retail-ecommerce-consumer",
+      "name": "买手",
+      "aliases": ["采购买手"],
+      "core_skills": ["选品与组货", "供应商谈判", "毛利管理"],
+      "dimensions": ["选品眼光", "商务谈判", "库存意识"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "media-publishing-content.journalist-editor",
+      "industry_id": "media-publishing-content",
+      "name": "记者编辑",
+      "aliases": ["记者", "编辑"],
+      "core_skills": ["选题策划", "采访与写作", "事实核查"],
+      "dimensions": ["新闻判断", "文字功底", "伦理底线"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "media-publishing-content.copywriter",
+      "industry_id": "media-publishing-content",
+      "name": "文案策划",
+      "aliases": ["文案"],
+      "core_skills": ["品牌文案", "创意概念", "多平台改写"],
+      "dimensions": ["文字表现力", "创意能力", "品牌理解"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "media-publishing-content.video-editor",
+      "industry_id": "media-publishing-content",
+      "name": "视频剪辑师",
+      "aliases": ["剪辑师"],
+      "core_skills": ["剪辑叙事", "调色与音效", "成片节奏"],
+      "dimensions": ["视听语言", "效率工具", "审美能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "media-publishing-content.producer",
+      "industry_id": "media-publishing-content",
+      "name": "制片人",
+      "aliases": ["节目制片"],
+      "core_skills": ["项目统筹", "预算控制", "团队协作"],
+      "dimensions": ["统筹能力", "成本意识", "危机处理"],
+      "recommended_type": "leadership"
+    },
+    {
+      "id": "media-publishing-content.broadcast-host",
+      "industry_id": "media-publishing-content",
+      "name": "播音主持",
+      "aliases": ["主持人"],
+      "core_skills": ["口语表达", "临场应变", "节目掌控"],
+      "dimensions": ["表达功底", "台风", "应变能力"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "media-publishing-content.book-editor",
+      "industry_id": "media-publishing-content",
+      "name": "图书编辑",
+      "aliases": [],
+      "core_skills": ["选题论证", "审校流程", "作者维护"],
+      "dimensions": ["选题眼光", "文字功底", "项目管理"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "media-publishing-content.screenwriter",
+      "industry_id": "media-publishing-content",
+      "name": "编剧",
+      "aliases": ["剧本编剧"],
+      "core_skills": ["故事结构", "人物塑造", "剧本格式"],
+      "dimensions": ["叙事能力", "共情能力", "改稿韧性"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "design-ux-animation-game.ui-designer",
+      "industry_id": "design-ux-animation-game",
+      "name": "UI 设计师",
+      "aliases": ["视觉设计师"],
+      "core_skills": ["视觉规范", "组件设计", "设计走查"],
+      "dimensions": ["视觉能力", "规范意识", "协作落地"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "design-ux-animation-game.ux-designer",
+      "industry_id": "design-ux-animation-game",
+      "name": "交互设计师",
+      "aliases": ["UX 设计师"],
+      "core_skills": ["用户研究", "交互流程设计", "可用性测试"],
+      "dimensions": ["用户思维", "方案能力", "验证意识"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "design-ux-animation-game.graphic-designer",
+      "industry_id": "design-ux-animation-game",
+      "name": "平面设计师",
+      "aliases": [],
+      "core_skills": ["版式与字体", "品牌视觉", "印刷工艺"],
+      "dimensions": ["美学功底", "细节把控", "交付规范"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "design-ux-animation-game.animator",
+      "industry_id": "design-ux-animation-game",
+      "name": "动画师",
+      "aliases": ["二维/三维动画师"],
+      "core_skills": ["角色动画", "分镜设计", "动效节奏"],
+      "dimensions": ["动画原理", "表现力", "工具熟练度"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "design-ux-animation-game.game-designer",
+      "industry_id": "design-ux-animation-game",
+      "name": "游戏策划",
+      "aliases": ["游戏设计师"],
+      "core_skills": ["玩法设计", "数值体系", "关卡设计"],
+      "dimensions": ["玩法洞察", "数值能力", "文档规范"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "design-ux-animation-game.concept-artist",
+      "industry_id": "design-ux-animation-game",
+      "name": "游戏原画师",
+      "aliases": ["概念设计师"],
+      "core_skills": ["角色与场景设定", "风格探索", "视觉迭代"],
+      "dimensions": ["绘画功底", "设计感", "风格适配"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "design-ux-animation-game.3d-artist",
+      "industry_id": "design-ux-animation-game",
+      "name": "三维美术师",
+      "aliases": ["3D 美术"],
+      "core_skills": ["建模与贴图", "材质渲染", "引擎落地"],
+      "dimensions": ["三维功底", "性能意识", "审美能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "legal-compliance-ip.legal-specialist",
+      "industry_id": "legal-compliance-ip",
+      "name": "法务专员",
+      "aliases": ["法务"],
+      "core_skills": ["合同审查", "法律意见出具", "纠纷处理"],
+      "dimensions": ["法律功底", "风险意识", "商务平衡"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "legal-compliance-ip.compliance-manager",
+      "industry_id": "legal-compliance-ip",
+      "name": "合规经理",
+      "aliases": [],
+      "core_skills": ["合规体系建设", "监管沟通", "制度建设"],
+      "dimensions": ["合规判断", "体系化能力", "沟通推动"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "legal-compliance-ip.ip-specialist",
+      "industry_id": "legal-compliance-ip",
+      "name": "知识产权专员",
+      "aliases": ["IP 专员"],
+      "core_skills": ["专利与商标实务", "侵权分析", "IP 布局"],
+      "dimensions": ["专业深度", "检索分析", "文书能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "legal-compliance-ip.paralegal",
+      "industry_id": "legal-compliance-ip",
+      "name": "律师助理",
+      "aliases": ["法务助理"],
+      "core_skills": ["案例检索", "文书起草", "案卷管理"],
+      "dimensions": ["严谨细致", "检索能力", "学习成长"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "legal-compliance-ip.risk-compliance-analyst",
+      "industry_id": "legal-compliance-ip",
+      "name": "风控合规分析师",
+      "aliases": [],
+      "core_skills": ["合规风险评估", "反洗钱监测", "整改跟踪"],
+      "dimensions": ["风险识别", "数据分析", "制度落地"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "public-social-services.civil-servant",
+      "industry_id": "public-social-services",
+      "name": "公务员",
+      "aliases": ["综合管理岗"],
+      "core_skills": ["公文写作", "政策执行", "组织协调"],
+      "dimensions": ["政治素养", "文字能力", "群众工作"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "public-social-services.community-worker",
+      "industry_id": "public-social-services",
+      "name": "社区工作者",
+      "aliases": ["社区专员"],
+      "core_skills": ["居民沟通", "活动组织", "矛盾调解"],
+      "dimensions": ["群众工作", "耐心细致", "资源协调"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "public-social-services.social-worker",
+      "industry_id": "public-social-services",
+      "name": "社工",
+      "aliases": ["社会工作者"],
+      "core_skills": ["个案工作", "资源链接", "小组活动设计"],
+      "dimensions": ["专业伦理", "共情能力", "方法应用"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "public-social-services.policy-researcher",
+      "industry_id": "public-social-services",
+      "name": "政策研究员",
+      "aliases": [],
+      "core_skills": ["政策分析", "调研方法", "报告撰写"],
+      "dimensions": ["研究能力", "政策理解", "表达输出"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "public-social-services.public-service-manager",
+      "industry_id": "public-social-services",
+      "name": "公共事业管理专员",
+      "aliases": [],
+      "core_skills": ["项目管理", "绩效评估", "跨部门协同"],
+      "dimensions": ["管理能力", "服务意识", "流程规范"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "hospitality-tourism-fnb.hotel-management-trainee",
+      "industry_id": "hospitality-tourism-fnb",
+      "name": "酒店管理培训生",
+      "aliases": ["管培生（酒店）"],
+      "core_skills": ["前厅与客房运营", "服务标准", "轮岗学习"],
+      "dimensions": ["服务意识", "学习意愿", "抗压能力"],
+      "recommended_type": "behavioral"
+    },
+    {
+      "id": "hospitality-tourism-fnb.front-office-manager",
+      "industry_id": "hospitality-tourism-fnb",
+      "name": "前厅经理",
+      "aliases": [],
+      "core_skills": ["接待与投诉处理", "收益管理", "排班管理"],
+      "dimensions": ["服务品质", "应变能力", "团队管理"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "hospitality-tourism-fnb.tourism-planner",
+      "industry_id": "hospitality-tourism-fnb",
+      "name": "旅游规划师",
+      "aliases": [],
+      "core_skills": ["线路设计", "资源整合", "产品定价"],
+      "dimensions": ["产品思维", "资源统筹", "市场理解"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "hospitality-tourism-fnb.restaurant-manager",
+      "industry_id": "hospitality-tourism-fnb",
+      "name": "餐厅经理",
+      "aliases": ["店长（餐饮）"],
+      "core_skills": ["门店运营", "食安管理", "服务质量"],
+      "dimensions": ["运营管理", "食安意识", "团队激励"],
+      "recommended_type": "leadership"
+    },
+    {
+      "id": "hospitality-tourism-fnb.exhibition-planner",
+      "industry_id": "hospitality-tourism-fnb",
+      "name": "会展策划师",
+      "aliases": ["会展策划"],
+      "core_skills": ["展会方案设计", "供应商协调", "现场运营"],
+      "dimensions": ["策划能力", "统筹执行", "应急处理"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "agriculture-food.agronomist",
+      "industry_id": "agriculture-food",
+      "name": "农业技术员",
+      "aliases": ["农艺师"],
+      "core_skills": ["作物栽培", "田间管理", "病虫害防治"],
+      "dimensions": ["农学功底", "动手能力", "田间观察"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "agriculture-food.food-rd-engineer",
+      "industry_id": "agriculture-food",
+      "name": "食品研发工程师",
+      "aliases": ["食品研发"],
+      "core_skills": ["配方开发", "工艺放大", "感官评价"],
+      "dimensions": ["研发能力", "标准化意识", "成本平衡"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "agriculture-food.food-quality-inspector",
+      "industry_id": "agriculture-food",
+      "name": "食品质量检测员",
+      "aliases": ["食品检测员"],
+      "core_skills": ["理化与微生物检验", "标准判定", "记录规范"],
+      "dimensions": ["检验技能", "数据严谨", "标准意识"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "agriculture-food.smart-agriculture-engineer",
+      "industry_id": "agriculture-food",
+      "name": "智慧农业工程师",
+      "aliases": [],
+      "core_skills": ["物联网监测", "农业数据分析", "系统运维"],
+      "dimensions": ["技术融合", "场景理解", "落地能力"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "agriculture-food.food-safety-specialist",
+      "industry_id": "agriculture-food",
+      "name": "食品安全专员",
+      "aliases": [],
+      "core_skills": ["HACCP 体系", "合规审核", "追溯管理"],
+      "dimensions": ["法规应用", "体系思维", "风险防控"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "automotive-transport-aviation.vehicle-engineer",
+      "industry_id": "automotive-transport-aviation",
+      "name": "整车工程师",
+      "aliases": ["汽车工程师"],
+      "core_skills": ["整车开发流程", "零部件集成", "试验验证"],
+      "dimensions": ["系统思维", "项目节点", "问题闭环"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "automotive-transport-aviation.autonomous-driving-engineer",
+      "industry_id": "automotive-transport-aviation",
+      "name": "智能驾驶算法工程师",
+      "aliases": ["自动驾驶工程师"],
+      "core_skills": ["感知与融合", "规划控制", "数据闭环"],
+      "dimensions": ["算法功底", "实车验证", "安全边界"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "automotive-transport-aviation.automotive-electronics-engineer",
+      "industry_id": "automotive-transport-aviation",
+      "name": "汽车电子工程师",
+      "aliases": [],
+      "core_skills": ["电控系统", "总线协议", "台架测试"],
+      "dimensions": ["电子基础", "诊断能力", "规范流程"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "automotive-transport-aviation.aviation-maintenance-engineer",
+      "industry_id": "automotive-transport-aviation",
+      "name": "航空维修工程师",
+      "aliases": ["机务工程师"],
+      "core_skills": ["适航规章", "故障隔离", "维护手册执行"],
+      "dimensions": ["规章意识", "细致严谨", "应急处理"],
+      "recommended_type": "scenario"
+    },
+    {
+      "id": "automotive-transport-aviation.transportation-planner",
+      "industry_id": "automotive-transport-aviation",
+      "name": "交通工程师",
+      "aliases": [],
+      "core_skills": ["交通仿真", "信号配时", "方案评估"],
+      "dimensions": ["仿真分析", "数据采集", "方案表达"],
+      "recommended_type": "case"
+    },
+    {
+      "id": "automotive-transport-aviation.aircraft-design-engineer",
+      "industry_id": "automotive-transport-aviation",
+      "name": "飞行器设计工程师",
+      "aliases": [],
+      "core_skills": ["气动设计", "结构强度", "总体方案"],
+      "dimensions": ["设计功底", "仿真验证", "系统权衡"],
+      "recommended_type": "technical"
+    },
+    {
+      "id": "automotive-transport-aviation.vehicle-test-engineer",
+      "industry_id": "automotive-transport-aviation",
+      "name": "汽车测试工程师",
+      "aliases": [],
+      "core_skills": ["整车试验", "测试规范编制", "问题闭环"],
+      "dimensions": ["测试方法", "数据分析", "报告能力"],
+      "recommended_type": "technical"
+    }
+  ]
+}

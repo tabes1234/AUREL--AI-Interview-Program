@@ -1,0 +1,18 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
+httpx>=0.27.0
+# 知岗（JD 解析 PDF 上传）与履历成章（简历导出）
+pypdf>=4.0.0
+python-docx>=1.1.0
+reportlab>=4.0.0
+pytest>=8.0.0
+
+# 可选：本地离线语音识别（ASR_PROVIDER=local 时需要；不装则自动降级到其他提供方）
+# faster-whisper>=1.2.1
+# 注：faster-whisper 依赖的旧版 PyAV（<15）无 cp313 wheel；WAV 输入已改为本地解码绕开 PyAV，
+#     其余格式仍走 faster-whisper 内部解码（需可用 PyAV 环境）

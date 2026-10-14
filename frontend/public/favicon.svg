@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- 观澜 AUREL favicon：与 public/images/aurel-logo-mark.svg 同源（海鸥 + 日光 + 三层微澜） -->
+  <defs>
+    <linearGradient id="bg" x1="24" y1="0" x2="24" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B92E2"/>
+      <stop offset="0.55" stop-color="#3E70BE"/>
+      <stop offset="1" stop-color="#2E5AA8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(33.5 13.5) scale(7.5)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="48" height="48" rx="13" fill="url(#bg)"/>
+  <circle cx="33.5" cy="13.5" r="7.5" fill="url(#glow)"/>
+  <circle cx="33.5" cy="13.5" r="3.2" fill="#FFE9BE"/>
+  <path d="M7 14.8 C10 10.6 14 10.6 16.8 13.6 C19.6 10.6 23.6 10.6 26.6 14.8" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+  <path d="M8 25.5c5.3-2.9 10.7-2.9 16 0s10.7 2.9 16 0" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M10 32.5c4.7-3.3 9.3-3.3 14 0s9.3 3.3 14 0" stroke="#DCEBFF" stroke-width="2.7" stroke-linecap="round" opacity="0.88"/>
+  <path d="M12 39c4-2.5 8-2.5 12 0s8 2.5 12 0" stroke="#BDD8FC" stroke-width="2.4" stroke-linecap="round" opacity="0.62"/>
+</svg>

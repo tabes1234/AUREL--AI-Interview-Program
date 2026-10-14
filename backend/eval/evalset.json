@@ -1,0 +1,84 @@
+{
+  "name": "aurel-evalset-v1",
+  "description": "固定评测集：T1 评分与问题生成的回归基准。reference.overall_score 为人工锚点分（0-10），must_cover 为回答应体现的关键概念。",
+  "scoring_cases": [
+    {
+      "id": "scoring-001",
+      "position": "前端工程师",
+      "difficulty": "intermediate",
+      "language": "zh",
+      "question": "请介绍一下你对浏览器事件循环（Event Loop）的理解",
+      "answer": "事件循环是 JavaScript 实现异步的机制。JS 是单线程的，同步任务在主线程执行，异步任务交给浏览器其他线程，完成后回调进入任务队列。任务队列分宏任务和微任务：宏任务比如 setTimeout，微任务比如 Promise.then。每次宏任务执行完后会先清空所有微任务，再进行下一次宏任务，中间可能进行页面渲染。我在项目里用 Promise 和 async/await 做过接口串行优化，把三个依次依赖的请求用 await 链起来，避免了回调地狱。不过我对渲染时机和 requestAnimationFrame 的执行顺序理解还不够深入。",
+      "reference": {
+        "overall_score": 7.0,
+        "must_cover": ["单线程", "宏任务", "微任务", "Promise"]
+      }
+    },
+    {
+      "id": "scoring-002",
+      "position": "前端工程师",
+      "difficulty": "intermediate",
+      "language": "zh",
+      "question": "讲讲你做过的性能优化",
+      "answer": "就是做了很多优化，比如用了懒加载，还有缓存，然后压缩了图片，页面变快了很多。反正就是常规手段都上了，效果还不错。",
+      "reference": {
+        "overall_score": 3.0,
+        "must_cover": []
+      }
+    },
+    {
+      "id": "scoring-003",
+      "position": "后端工程师",
+      "difficulty": "advanced",
+      "language": "zh",
+      "question": "设计一个支持高并发的短链接服务，说说你的方案",
+      "answer": "我会从三方面设计。存储层用关系库存映射，发号器用预分配号段加雪花 ID 生成全局唯一短码，Base62 编码到 7 位。读路径短链接跳转 QPS 远高于写入，所以前面加 Redis 缓存热点映射，缓存未命中再回源并回填，设置随机过期时间防雪崩。写入做异步落库，先返回号段内的短码。监控上关注缓存命中率和长尾延迟。权衡点在于强一致性没必要，短码映射基本不变，允许缓存短暂不一致。之前我做过一个类似的 URL 服务，峰值大概三千 QPS。",
+      "reference": {
+        "overall_score": 8.5,
+        "must_cover": ["缓存", "发号", "一致性"]
+      }
+    },
+    {
+      "id": "scoring-004",
+      "position": "产品经理",
+      "difficulty": "intermediate",
+      "language": "zh",
+      "question": "如果产品的次日留存下降了 15%，你怎么排查？",
+      "answer": "我会先确认数据口径没有变化，比如是不是埋点改版或统计逻辑调整导致的假跌。然后按渠道、平台、新用户来源拆分，看是整体下跌还是某个 segment 拖累。时间上对照有没有版本发布、活动结束或竞品动作。如果确认是真实下跌，我会回到用户行为路径，看漏斗哪一步流失变多，再抽样看用户反馈。最后给出假设并设计小流量实验验证。我在上一个项目处理过类似情况，最后定位是新版引导页增加了两步导致流失。",
+      "reference": {
+        "overall_score": 8.0,
+        "must_cover": ["口径", "拆分", "假设"]
+      }
+    },
+    {
+      "id": "scoring-005",
+      "position": "前端工程师",
+      "difficulty": "basic",
+      "language": "zh",
+      "question": "CSS 里 flex 布局常用的属性有哪些？",
+      "answer": "容器上加 display:flex。主轴方向用 flex-direction，换行用 flex-wrap，对齐用 justify-content 和 align-items。子元素可以用 flex:1 来平分剩余空间，还有 flex-grow、flex-shrink 和 flex-basis。我平时主要用 justify-content 做水平居中，align-items 做垂直居中。",
+      "reference": {
+        "overall_score": 6.5,
+        "must_cover": ["flex-direction", "justify-content", "align-items"]
+      }
+    }
+  ],
+  "question_cases": [
+    {
+      "id": "questions-001",
+      "position": "前端工程师",
+      "description": "负责 React 中后台系统开发，关注工程质量与性能",
+      "difficulty": "intermediate",
+      "language": "zh",
+      "question_count": 3
+    },
+    {
+      "id": "questions-002",
+      "position": "后端工程师",
+      "description": "负责高并发服务端开发，熟悉数据库与缓存",
+      "difficulty": "advanced",
+      "language": "zh",
+      "question_count": 2
+    }
+  ]
+}

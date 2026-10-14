@@ -29,10 +29,28 @@ def test_announcements_sorted_dated_first():
     assert all(i["date"] is None for i in items[len(dated):])
 
 
-def test_announcements_current_release_present():
+def test_announcements_early_history_retired():
+    """前期开发过程公告已按内容策略下线：仅保留近期核心公告，历史条目不得复活。"""
     items = client.get("/api/v1/announcements").json()["items"]
-    release = next(i for i in items if i["version"] == "v0.3.0")
-    assert "第五阶段" in release["title"]
+    retired_ids = {
+        "release-v0.3.0",
+        "milestone-phase-1",
+        "milestone-phase-2",
+        "milestone-phase-3",
+        "milestone-phase-4",
+        "milestone-phase-6",
+        "milestone-phase-9",
+        "milestone-phase-10",
+        "milestone-phase-12",
+        "milestone-brand-refresh",
+        "fix-phase-2-followup",
+    }
+    ids = {i["id"] for i in items}
+    assert not ids & retired_ids
+    # 保留的普通公告必须都带日期（近期记录，无日期条目只允许是置顶档案）
+    normal = [i for i in items if not i.get("pinned")]
+    assert len(normal) == 5
+    assert all(i["date"] for i in normal)
 
 
 def test_tech_archive_pinned_first_and_single():

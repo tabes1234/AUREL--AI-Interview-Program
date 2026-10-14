@@ -4,8 +4,8 @@ import {
   BarChart3,
   Compass,
   MessagesSquare,
-  NotebookPen,
   Sailboat,
+  Signpost,
   X,
   type LucideIcon,
 } from 'lucide-react'
@@ -27,38 +27,38 @@ interface OnboardingStep {
 const ONBOARDING_STEPS: OnboardingStep[] = [
   {
     title: '临水初见',
-    body: '观水有术，必观其澜。你的每一次作答都会在这里激起回响，每一分成长都有迹可循——见微，方能知远。',
+    body: '观水有术，必观其澜。暖心寄语每日相伴，小鸥静候右下角——从这里出发，你的每一次作答都会在这里激起回响，每一分成长都有迹可循。',
     section: '首页 · 观澜之意',
     image: '/onboarding/onboarding-home.png',
     icon: Compass,
   },
   {
     title: '扬帆行舟',
-    body: '行舟是你的港湾：每日的训练任务与各处功能，皆沿这条水路停泊。从此处启程，随取随用。',
+    body: '行舟是你的港湾：启程、洞察、知行三组航路，串起观澜的全部功课；本周澜记与成长轨迹也停泊于此，随取随用。',
     section: '栏目 · 行舟（工作台）',
     image: '/onboarding/onboarding-app.png',
     icon: Sailboat,
   },
   {
     title: '问澜起笔',
-    body: '择定行业与志业，问澜便落下第一问。题目由真实模型生成，追问随你的回答而深——步步见真。',
+    body: '择定行业与志业，问澜便落下第一问。题目由真实模型生成，追问随你的回答而深，报告附原文证据——步步见真。',
     section: '栏目 · 问澜（面试练习）',
     image: '/onboarding/onboarding-interview.png',
     icon: MessagesSquare,
   },
   {
     title: '观己知远',
-    body: '观己把你的回答织成能力星图，每一分都附原文为证；回响收存每份报告。长处短处，静水照影，了然于目。',
+    body: '观己把你的回答织成能力星图，每一分都附原文为证；回响收存每份报告，星图对照让你看清与目标岗位的差距。',
     section: '栏目 · 观己（能力星图）',
     image: '/onboarding/onboarding-skills.png',
     icon: BarChart3,
   },
   {
-    title: '泊岸拾澜',
-    body: '名笺安放你的账户与设置，澜讯捎来每一封航讯。泊岸小憩，再启新程——观澜始终在这里。',
-    section: '栏目 · 名笺（个人资料）',
-    image: '/onboarding/onboarding-me.png',
-    icon: NotebookPen,
+    title: '知途问津',
+    body: '小鸥是会记得你的职业规划伙伴：你说过的它记着，你确认过的才作数；规划化作 7/30/90 天的行动，一步一履痕。',
+    section: '栏目 · 知途（AI 职业规划）',
+    image: '/onboarding/onboarding-career.png',
+    icon: Signpost,
   },
 ]
 

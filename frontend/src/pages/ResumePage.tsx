@@ -2,7 +2,6 @@ import { BookOpen, Download, ExternalLink, FileDown, FileUp, History, Loader2, P
 import { useEffect, useId, useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { AurelTaskStatus, useAsyncTask } from '../components/aurel-progress'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
@@ -1732,7 +1731,6 @@ export default function ResumePage() {
         kicker="知行"
         title="履历成章"
         subtitle="把简历文件拖进来，自动解析成章；结构化编辑、模板预览、版本留痕。AI 只提建议，确认后才应用；导出即所得。"
-        actions={<AiStatusBadge className="shrink-0 self-start sm:self-auto" />}
       />
 
       {/* 我的简历：细线行列表 */}

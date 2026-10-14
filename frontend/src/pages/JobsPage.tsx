@@ -23,7 +23,6 @@ import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { AurelTaskStatus, useAsyncTask } from '../components/aurel-progress'
 import { Badge } from '../components/ui/Badge'
 import { Button, ButtonLink } from '../components/ui/Button'
@@ -1042,7 +1041,6 @@ export default function JobsPage() {
         kicker="知行"
         title="知岗"
         subtitle="读懂岗位所需，找准能力对应。解析结果均可回溯 JD 原文依据。"
-        actions={<AiStatusBadge className="shrink-0" />}
       />
 
       <div className="mt-10 grid items-start gap-10 lg:grid-cols-12">

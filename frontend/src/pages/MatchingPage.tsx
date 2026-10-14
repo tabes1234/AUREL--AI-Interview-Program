@@ -15,7 +15,6 @@ import {
 } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { AurelTaskStatus, useAsyncTask } from '../components/aurel-progress'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
@@ -232,7 +231,6 @@ export function MatchingPage() {
             拖入简历，自动解析目标岗位；简历与岗位相互映照：命中之处有原文为证，缺隙之处如实相告。
           </p>
         </div>
-        <AiStatusBadge className="shrink-0" />
       </div>
 
       <Card>

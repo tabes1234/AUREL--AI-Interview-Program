@@ -16,7 +16,6 @@ import {
 } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { EmptyState } from '../components/ui/EmptyState'
@@ -266,7 +265,6 @@ export function ExpressionPage() {
         kicker="洞察"
         title="听澜"
         subtitle="说出你的回答，观澜负责倾听：语速、停顿一目了然，三位分析师陪你把表达磨得更亮。"
-        actions={<AiStatusBadge className="shrink-0" />}
       />
 
       {asr && !asr.configured ? <AsrGuideCard providers={asr.providers} /> : null}

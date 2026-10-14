@@ -9,7 +9,6 @@
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { PageTransition } from '../components/motion/PageTransition'
 import { ServiceStatus } from '../components/ServiceStatus'
 import { ButtonLink } from '../components/ui/Button'
@@ -92,7 +91,6 @@ export default function DashboardPage() {
           <>
             <div className="flex flex-wrap gap-2 text-xs">
               <ServiceStatus />
-              <AiStatusBadge />
             </div>
             <ButtonStart />
           </>

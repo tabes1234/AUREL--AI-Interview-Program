@@ -14,7 +14,6 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { AurelTaskStatus, useAsyncTask } from '../components/aurel-progress'
 import { PageHeading } from '../components/editorial/Editorial'
 import { Button, ButtonLink } from '../components/ui/Button'
@@ -395,7 +394,6 @@ export default function InterviewNewPage() {
         kicker="启程"
         title="问澜"
         subtitle="循行业脉络，生成职业面试题。"
-        actions={<AiStatusBadge className="shrink-0" />}
       />
 
       <div className="mt-8">

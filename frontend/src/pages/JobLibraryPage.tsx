@@ -21,7 +21,6 @@ import {
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
 import { Card, CardBody, CardHeader } from '../components/ui/Card'
@@ -379,7 +378,6 @@ export default function JobLibraryPage() {
             每条岗位都可回溯至企业官方页面。
           </p>
         </div>
-        <AiStatusBadge className="shrink-0" />
       </div>
 
       {/* 数据真实性说明 */}

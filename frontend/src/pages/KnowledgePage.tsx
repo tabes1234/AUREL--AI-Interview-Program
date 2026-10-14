@@ -1,7 +1,6 @@
 import { FileSearch, FileText, Loader2, Trash2, Upload, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { api, ApiError } from '../api/client'
-import { AiStatusBadge } from '../components/AiStatusBadge'
 import { AurelTaskStatus, useAsyncTask } from '../components/aurel-progress'
 import { Badge } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
@@ -93,7 +92,6 @@ export function KnowledgePage() {
             汇入你的资料，面试题目将有据可依。检索证据真实可溯，标注出处与匹配分。
           </p>
         </div>
-        <AiStatusBadge className="shrink-0" />
       </div>
 
       <Card>

@@ -465,14 +465,38 @@ function GrowthSection({
   }
 
 /** 本周澜记：近 7 日真实活动聚合 + AI 短评（不可用时如实降级）。 */
+
+// 模块级缓存（60 秒）与在途请求去重：反复进入工作台不重复请求，也避免卸载中止留下取消噪声
+const WEEKLY_TTL_MS = 60_000
+let weeklyCache: { at: number; data?: WeeklyReport; promise?: Promise<WeeklyReport> } | null = null
+
+function loadWeekly(): Promise<WeeklyReport> {
+  const now = Date.now()
+  if (weeklyCache?.data && now - weeklyCache.at < WEEKLY_TTL_MS) {
+    return Promise.resolve(weeklyCache.data)
+  }
+  if (weeklyCache?.promise) return weeklyCache.promise
+  const promise = api
+    .getWeeklyReport()
+    .then((data) => {
+      weeklyCache = { at: Date.now(), data }
+      return data
+    })
+    .catch((err: unknown) => {
+      weeklyCache = null
+      throw err
+    })
+  weeklyCache = { at: now, promise }
+  return promise
+}
+
 function WeeklyNote() {
   const [report, setReport] = useState<WeeklyReport | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let active = true
-    api
-      .getWeeklyReport()
+    loadWeekly()
       .then((data) => {
         if (active) setReport(data)
       })

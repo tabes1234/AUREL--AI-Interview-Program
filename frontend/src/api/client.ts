@@ -112,7 +112,9 @@ async function request<TResponse>(path: string, init?: RequestInit): Promise<TRe
       headers: { Accept: 'application/json', ...init?.headers },
       ...init,
     })
-  } catch {
+  } catch (err) {
+    // 调用方主动取消（如组件卸载中止请求）时原样抛出，避免被误报为网络错误
+    if (err instanceof DOMException && err.name === 'AbortError') throw err
     throw new ApiError('网络请求失败：无法连接后端服务')
   }
 
@@ -764,8 +766,8 @@ export const api = {
   },
 
   // ---------- 澜记周报 ----------
-  getWeeklyReport(): Promise<WeeklyReport> {
-    return request<WeeklyReport>('/stats/weekly')
+  getWeeklyReport(signal?: AbortSignal): Promise<WeeklyReport> {
+    return request<WeeklyReport>('/stats/weekly', { signal })
   },
 
   // ---------- 星图对照（观己 × 知岗差距分析） ----------

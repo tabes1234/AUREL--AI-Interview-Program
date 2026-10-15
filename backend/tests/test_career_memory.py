@@ -448,6 +448,8 @@ def test_long_conversation_triggers_summary(api_client, db_session):
 def test_related_history_recall_and_deletion(api_client, db_session):
     """相关历史召回：其他会话的相关内容进入上下文；删除后立即退出召回。"""
     other = api_client.post("/api/v1/career-guide/conversations", json=None).json()
+    # 消息端点在模型失败时不落库（对话完整性设计），故先注入假客户端再保存种子消息
+    use_client(FullFakeClient(chat_replies=["好的，记下了。"]))
     api_client.post(
         f"/api/v1/career-guide/conversations/{other['id']}/messages",
         json={"content": "我在准备数据分析师岗位，纠结要不要学统计"},

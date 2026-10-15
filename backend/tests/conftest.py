@@ -79,6 +79,23 @@ def _auth_env(monkeypatch):
     auth_service.set_session_factory(SessionLocal)
 
 
+@pytest.fixture(autouse=True)
+def _ark_env(monkeypatch):
+    """默认测试环境显式提供方舟测试凭证，并清空 ark_configured 的 lru_cache。
+
+    保证 CI（无 backend/.env）与本地（有 .env）行为一致：默认视为已配置，
+    AI 请求一律由注入的假客户端应答，不会真实外呼；需要模拟「未配置」的用例
+    自行 delenv 并清缓存（如 NotConfiguredArkClient 相关用例）。
+    """
+    from app.config import ark_configured
+
+    monkeypatch.setenv("ARK_API_KEY", "test-ark-key")
+    monkeypatch.setenv("ARK_MODEL", "test-ark-model")
+    ark_configured.cache_clear()
+    yield
+    ark_configured.cache_clear()
+
+
 @pytest.fixture()
 def db_session():
     Base.metadata.create_all(TEST_ENGINE)

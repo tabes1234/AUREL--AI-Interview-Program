@@ -16,6 +16,7 @@ import type { ResumeGallery, ResumeTemplateGuide } from '../types'
 /** 行业分组：按 industry 字段前缀归组，未匹配的兜底到最后 */
 const GROUPS: { key: string; label: string; match: (industry: string) => boolean }[] = [
   { key: 'general', label: '通用 · 全行业', match: (i) => i.startsWith('通用') },
+  { key: 'tech', label: '计算机 · 互联网', match: (i) => i.startsWith('计算机') },
   { key: 'finance', label: '金融 · 银行证券', match: (i) => i.startsWith('金融') },
   { key: 'fmcg', label: '快消 · 零售', match: (i) => i.startsWith('快消') },
   { key: 'manufacturing', label: '制造 · 新能源', match: (i) => i.startsWith('制造') },
@@ -169,7 +170,7 @@ export default function ResumeGalleryPage() {
         <ul className="space-y-1.5 text-xs leading-relaxed text-ink-soft">
           <li className="flex items-start gap-2">
             <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-600" aria-hidden="true" />
-            全部 {gallery?.templates.length ?? 16} 条模板规范均核对自官方来源页面（高校就业网
+            全部 {gallery?.templates.length ?? 22} 条模板规范均核对自官方来源页面（高校就业网
             .edu.cn 与国家大学生就业服务平台等），只收录结构与写法规范，不含任何真实个人简历内容。
           </li>
           <li className="flex items-start gap-2">

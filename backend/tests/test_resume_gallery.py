@@ -51,6 +51,7 @@ def test_resume_gallery_official_sources():
         "24365.smartedu.cn",
         "51job.com",
         "yinhangzhaopin.com",
+        "nowcoder.com",
     )
     for t in templates:
         assert any(h in t["source_url"] for h in allowed_hosts), t["source_url"]

@@ -31,7 +31,7 @@
 
 ### 单容器部署能力（2026-10-15）
 
-- [Dockerfile.app](../Dockerfile.app)：前端构建产物打进后端镜像，一个容器运行整站（适配 Render / Fly.io / HF Spaces 免费托管，`PORT` 自动适配）
+- [Dockerfile](../Dockerfile)：前端构建产物打进后端镜像，一个容器运行整站（适配 Render / Fly.io / HF Spaces 免费托管，`PORT` 自动适配；Render 默认识别根目录 `Dockerfile`）
 - [main.py](../backend/app/main.py)：检测到 `frontend/dist` 时自动托管静态文件并对 SPA 路由回退 `index.html`；API 未命中不受影响（401/404 语义不变）
 - [middleware.py](../backend/app/middleware.py)：非 `/api` 路径（前端页面与静态资源）不再要求登录会话
 - 本地生产模式实测通过：`/`、`/app`、`/assets/*` 200，`/api/v1/health` JSON 200，登录后 API 未命中 404

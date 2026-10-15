@@ -85,7 +85,7 @@ docker compose up -d --build
 ### 单容器部署（Render / Fly.io 等托管平台）
 
 ```bash
-docker build -f Dockerfile.app -t aurel-app .
+docker build -t aurel-app .
 docker run -p 8000:8000 --env-file .env aurel-app
 # 打开 http://127.0.0.1:8000 —— 前端页面与 API 同源，一个容器运行整站
 ```

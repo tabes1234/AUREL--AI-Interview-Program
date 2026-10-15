@@ -1,5 +1,5 @@
 # 观澜 AUREL 整站单容器镜像（前端构建产物由 FastAPI 托管，一个容器即可运行整站）
-# 构建上下文为仓库根目录：docker build -f Dockerfile.app -t aurel-app .
+# 构建上下文为仓库根目录：docker build -t aurel-app .
 # 适用于 Render / Fly.io / HF Spaces 等单容器免费托管平台（PORT 环境变量自动适配）
 FROM node:24-alpine AS frontend-build
 

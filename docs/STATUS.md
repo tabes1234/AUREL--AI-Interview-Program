@@ -20,7 +20,7 @@
 
 - 后端 pytest **315/315** 通过（新增 4 例）；前端 eslint / tsc / vite build 全绿
 - 浏览器实测：拾贝页 22 条模板按 9 行业分组渲染、筛选与来源外链正常；知潮搜索「招商银行/宁德时代/迈瑞」均命中新岗位；/app、/career-guide、/job-library 全程 console 零 error
-- 已提交 GitHub Actions，双 job 待绿（见仓库 CI 页）
+- GitHub Actions 双 job（前端 lint/tsc/build + 后端 pytest）对 90dcc67 与 5248814 两次提交均全绿
 
 ## 仓库清理与工程化（已完成，2026-10-14）
 

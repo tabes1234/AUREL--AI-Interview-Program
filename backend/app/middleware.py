@@ -20,13 +20,14 @@ from app import config
 from app.config import access_token, cors_origins, rate_limit_per_minute
 from app.services import auth_service
 
-# 免登录路径：健康检查、不含敏感信息的只读状态端点、公开公告与公开目录、认证接口
+# 免登录路径：健康检查、不含敏感信息的只读状态端点、公开公告与公开目录、公开模板指南、认证接口
 AUTH_EXEMPT_PREFIXES = (
     "/api/v1/health",
     "/api/v1/ai/status",
     "/api/v1/expression/status",
     "/api/v1/announcements",
     "/api/v1/catalog",
+    "/api/v1/resume-gallery",
     "/api/v1/auth",
 )
 

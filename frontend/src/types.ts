@@ -322,6 +322,25 @@ export interface TechArchiveDetail {
   sections: TechArchiveSection[]
 }
 
+// ---------- 拾贝：官方简历模板指南库（只读公开数据） ----------
+
+export interface ResumeTemplateGuide {
+  id: string
+  name: string
+  industry: string
+  audience: string
+  structure: string[]
+  tips: string[]
+  source_url: string
+  source_title: string
+  accessed_at: string
+}
+
+export interface ResumeGallery {
+  verified_on: string
+  templates: ResumeTemplateGuide[]
+}
+
 // ---------- T5 表达分析 / T6 多角色工作流 ----------
 
 export interface AsrProviderInfo {

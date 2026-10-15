@@ -24,6 +24,7 @@ const MatchingPage = lazy(() => import('./pages/MatchingPage').then((m) => ({ de
 const JobsPage = lazy(() => import('./pages/JobsPage'))
 const JobLibraryPage = lazy(() => import('./pages/JobLibraryPage'))
 const ResumePage = lazy(() => import('./pages/ResumePage'))
+const ResumeGalleryPage = lazy(() => import('./pages/ResumeGalleryPage'))
 const MistakesPage = lazy(() => import('./pages/MistakesPage'))
 const ChallengesPage = lazy(() => import('./pages/ChallengesPage'))
 const ConcertoPage = lazy(() => import('./pages/ConcertoPage'))
@@ -84,6 +85,7 @@ export default function App() {
               <Route path="/jobs" element={<JobsPage />} />
               <Route path="/job-library" element={<JobLibraryPage />} />
               <Route path="/resume" element={<ResumePage />} />
+              <Route path="/resume-gallery" element={<ResumeGalleryPage />} />
               <Route path="/mistakes" element={<MistakesPage />} />
               <Route path="/challenges" element={<ChallengesPage />} />
               <Route path="/concerto" element={<ConcertoPage />} />

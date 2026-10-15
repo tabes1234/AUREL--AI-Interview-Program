@@ -24,6 +24,7 @@ import type {
   KnowledgeSearchResponse,
   AnnouncementList,
   TechArchiveDetail,
+  ResumeGallery,
   MistakeCardOut,
   MistakeListResponse,
   ReportOut,
@@ -563,6 +564,11 @@ export const api = {
   /** 置顶技术档案详情：公告元数据 + 12 章节完整正文 */
   getTechArchive(): Promise<TechArchiveDetail> {
     return request<TechArchiveDetail>('/announcements/project-tech-archive')
+  },
+
+  // ---------- 拾贝（官方简历模板指南库，公开只读） ----------
+  getResumeGallery(): Promise<ResumeGallery> {
+    return request<ResumeGallery>('/resume-gallery')
   },
 
   // ---------- 认证：用户名密码注册/登录 ----------

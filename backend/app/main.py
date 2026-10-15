@@ -21,6 +21,7 @@ from app.routers import (
     mistakes,
     observability,
     privacy,
+    resume_gallery,
     resumes,
     skills,
     stats,
@@ -82,6 +83,7 @@ app.include_router(matching.router)
 app.include_router(expression.router)
 app.include_router(jobs.router)
 app.include_router(job_library.router)
+app.include_router(resume_gallery.router)
 app.include_router(resumes.router)
 app.include_router(mistakes.router)
 app.include_router(challenges.router)

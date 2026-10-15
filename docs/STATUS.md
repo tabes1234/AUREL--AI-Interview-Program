@@ -25,6 +25,12 @@
 
 - 后端 pytest 311/311 通过；前端 eslint / tsc / vite build 全绿；浏览器实测引航五步（第五步知途截图正确）、澜讯仅剩 1 置顶 + 5 条近期公告、懒加载路由切换正常、控制台无错误
 
+### CI 首跑修复（已完成，2026-10-14）
+
+- 首次 CI 运行后端 pytest 失败（2 例）：根因是测试隐式依赖本地 `backend/.env` 的方舟凭证——无凭证环境下 `test_status_endpoint` 断言 `ark configured is True` 失败（`ark_configured()` 带 `lru_cache`，进程首判后被缓存）；`test_related_history_recall_and_deletion` 的种子消息 POST 被消息端点的凭证检查拒绝（该端点遵循「AI 失败不落任何消息」的对话完整性设计），消息未入库导致相关历史召回为空
+- 修复：[conftest.py](../backend/tests/conftest.py) 新增 `_ark_env` autouse fixture——测试环境显式提供 `ARK_API_KEY/ARK_MODEL` 测试值并清空 `ark_configured` 缓存（AI 请求一律由注入的假客户端应答，不真实外呼；需要模拟「未配置」的用例各自处理环境）；召回测试补注入假客户端再保存种子消息
+- 验证：移除 `.env` 精确复现 CI 环境后 311/311 通过；本地有 `.env` 环境 311/311 通过；CI 重跑双 job 全绿
+
 ## 海蓝微光：全站鼠标跟随光效重做（已完成，2026-10-14）
 
 ### 原问题根因

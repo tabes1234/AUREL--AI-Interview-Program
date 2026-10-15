@@ -106,6 +106,10 @@ class AccessControlMiddleware(BaseHTTPMiddleware):
                 db.close()
             if user is not None:
                 request.state.user_id = user.id
+                # 绑定请求级用户上下文：AI 调用观测按用户归属统计（管理中心用）
+                from app.services.llm_observability import bind_request_user
+
+                bind_request_user(user.id)
                 return await call_next(request)
 
         return JSONResponse(

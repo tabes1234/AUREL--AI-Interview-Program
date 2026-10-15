@@ -40,6 +40,7 @@ from app.services import (
 from app.services.ark_client import ArkClient
 from app.services.career_eval_rules import DATASET_VERSION
 from app.services.interview_service import map_ark_error
+from app.services.usage_tracking import record_event
 
 logger = logging.getLogger("aurel.career")
 
@@ -165,6 +166,8 @@ def compare_paths(
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001 — ArkError 等统一映射
         raise map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="zhitu", name="path_compare")
+    db.commit()
     return PathComparisonOut.model_validate(record)
 
 

@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AuthProvider } from './context/AuthProvider'
 import { RequireAuth } from './context/RequireAuth'
+import { RequireAdmin } from './components/admin/RequireAdmin'
 import { OnboardingProvider } from './components/onboarding/OnboardingGuide'
 import AppLayout from './components/layout/AppLayout'
 import { Loader2 } from 'lucide-react'
@@ -33,6 +34,15 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const ReportDetailPage = lazy(() => import('./pages/ReportDetailPage'))
 const ReportsPage = lazy(() => import('./pages/ReportsPage'))
 const SkillsPage = lazy(() => import('./pages/SkillsPage').then((m) => ({ default: m.SkillsPage })))
+
+// 观澜管理中心（独立布局，不进入普通用户导航；服务端校验管理员角色）
+const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'))
+const AdminOverviewPage = lazy(() => import('./pages/admin/AdminOverviewPage'))
+const AdminUsersPage = lazy(() => import('./pages/admin/AdminUsersPage'))
+const AdminUserDetailPage = lazy(() => import('./pages/admin/AdminUserDetailPage'))
+const AdminModulesPage = lazy(() => import('./pages/admin/AdminModulesPage'))
+const AdminAiPage = lazy(() => import('./pages/admin/AdminAiPage'))
+const AdminAuditPage = lazy(() => import('./pages/admin/AdminAuditPage'))
 
 /** 分块加载瞬间的品牌化占位：居中轻量旋转，不闪整页白屏 */
 function RouteFallback() {
@@ -107,6 +117,22 @@ export default function App() {
                 </RequireAuth>
               }
             />
+            {/* 观澜管理中心：仅管理员（前端守卫为展示层，接口在服务端二次校验） */}
+            <Route
+              path="/admin"
+              element={
+                <RequireAdmin>
+                  <AdminLayout />
+                </RequireAdmin>
+              }
+            >
+              <Route index element={<AdminOverviewPage />} />
+              <Route path="users" element={<AdminUsersPage />} />
+              <Route path="users/:userId" element={<AdminUserDetailPage />} />
+              <Route path="modules" element={<AdminModulesPage />} />
+              <Route path="ai" element={<AdminAiPage />} />
+              <Route path="audit" element={<AdminAuditPage />} />
+            </Route>
             <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>

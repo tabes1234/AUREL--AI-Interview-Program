@@ -756,8 +756,189 @@ export interface AuthUser {
   username: string
   nickname: string
   status: string
+  role: string
   created_at: string
   last_login_at: string | null
+}
+
+// ---------- 观澜管理中心（管理员后台） ----------
+
+export interface AdminTimeRange {
+  start?: string
+  end?: string
+}
+
+export interface AdminModuleUsage {
+  module: string
+  label: string
+  page_views: number
+  actions: number
+  action_errors: number
+  users: number
+  last_used: string | null
+}
+
+export interface AdminAiSummary {
+  total: number
+  success: number
+  failed: number
+  success_rate: number | null
+  avg_latency_ms: number | null
+  p50_ms: number | null
+  p95_ms: number | null
+  tokens_input: number | null
+  tokens_output: number | null
+  tokens_total: number | null
+  calls_with_usage: number
+}
+
+export interface AdminRecentActivityItem {
+  type: 'register' | 'action' | 'ai_error'
+  label: string
+  detail?: string
+  at: string
+}
+
+export interface AdminOverview {
+  generated_at: string
+  timezone: string
+  range: { start: string; end: string }
+  collection_started_at: string | null
+  users: {
+    total: number
+    disabled: number
+    new_in_range: number
+    active_in_range: number
+    dau: number
+    wau: number
+    mau: number
+  }
+  pages: { views_in_range: number; note: string }
+  modules: AdminModuleUsage[]
+  ai: AdminAiSummary
+  definitions: Record<string, string>
+  recent_activity: { items: AdminRecentActivityItem[] }
+  admin: { nickname: string }
+}
+
+export interface AdminTrends {
+  range: { start: string; end: string }
+  days: string[]
+  series: {
+    new_users: Record<string, number>
+    active_users: Record<string, number>
+    page_views: Record<string, number>
+    module_usage: Record<string, Record<string, number>>
+    ai_requests: Record<string, number>
+    ai_errors: Record<string, number>
+    ai_success_rate: Record<string, number | null>
+    ai_avg_latency_ms: Record<string, number | null>
+    tokens_total: Record<string, number>
+  }
+  notes: Record<string, string>
+}
+
+export interface AdminUserRow {
+  id: number
+  username: string
+  nickname: string
+  status: string
+  role: string
+  created_at: string
+  last_login_at: string | null
+  last_active_at: string | null
+  usage_count: number
+  ai_calls: number
+  last_module: string | null
+}
+
+export interface AdminUsersPage {
+  total: number
+  page: number
+  page_size: number
+  pages: number
+  items: AdminUserRow[]
+  range: { start: string; end: string }
+}
+
+export interface AdminUserDetail {
+  user: {
+    id: number
+    username: string
+    nickname: string
+    status: string
+    role: string
+    created_at: string
+    last_login_at: string | null
+    last_active_at: string | null
+  }
+  range: { start: string; end: string }
+  modules_in_range: {
+    module: string
+    label: string
+    page_views: number
+    actions: number
+    action_errors: number
+    last_used: string | null
+  }[]
+  historical_counts: { feature: string; count: number }[]
+  ai_in_range: AdminAiSummary
+  ai_all_time: AdminAiSummary
+  trend: {
+    days: string[]
+    page_views: Record<string, number>
+    actions: Record<string, number>
+  }
+}
+
+export interface AdminModulesResponse {
+  range: { start: string; end: string }
+  timezone: string
+  days: string[]
+  items: (AdminModuleUsage & { action_success: number; trend: Record<string, number> })[]
+  note: string
+}
+
+export interface AdminAiServiceRow extends AdminAiSummary {
+  service: string
+  module: string | null
+  module_label: string
+}
+
+export interface AdminAiResponse {
+  range: { start: string; end: string }
+  timezone: string
+  totals: AdminAiSummary & { timeouts: number | null }
+  by_service: AdminAiServiceRow[]
+  by_model: { model: string; total: number; tokens_total: number; has_usage: boolean }[]
+  error_categories: { category: string; count: number }[]
+  recent_errors: {
+    id: number
+    created_at: string
+    service: string
+    module_label: string
+    error_type: string | null
+    category: string
+    message: string | null
+  }[]
+  notes: Record<string, string>
+}
+
+export interface AdminAuditEntry {
+  id: number
+  admin: string
+  action: string
+  target_type: string
+  target_id: string
+  detail: Record<string, unknown> | null
+  created_at: string
+}
+
+export interface AdminAuditResponse {
+  total: number
+  page: number
+  page_size: number
+  items: AdminAuditEntry[]
 }
 
 export interface AuthMeResponse {

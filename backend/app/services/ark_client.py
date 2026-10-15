@@ -267,6 +267,8 @@ class ArkClient:
             ],
             "temperature": temperature,
             "stream": True,
+            # 请求服务端在流结束时下发真实 Token 用量（OpenAI 兼容；管理统计使用）
+            "stream_options": {"include_usage": True},
         }
         headers = {
             "Authorization": f"Bearer {self._api_key}",
@@ -315,11 +317,15 @@ class ArkClient:
                             else:
                                 succeeded = True
                                 for line in response.iter_lines():
-                                    delta = _parse_sse_delta(line)
-                                    if delta is None:
+                                    parsed = _parse_sse_delta(line)
+                                    if parsed is None:
+                                        continue
+                                    if isinstance(parsed, dict):
+                                        # 流结束时的 usage 块：真实 Token 用量
+                                        usage = parsed
                                         continue
                                     produced = True
-                                    yield delta
+                                    yield parsed
                                 if not produced:
                                     succeeded = False
                                     error_type, error_message = "BadResponse", "AI 模型返回了空内容"
@@ -369,8 +375,8 @@ class ArkClient:
             raise ArkError(error_message or "AI 模型调用失败")
 
 
-def _parse_sse_delta(line: str) -> str | None:
-    """解析 OpenAI 兼容 SSE 行，返回文本增量；非数据行或空增量返回 None。"""
+def _parse_sse_delta(line: str) -> str | dict | None:
+    """解析 OpenAI 兼容 SSE 行：文本增量返回 str；usage 块返回 dict；其余返回 None。"""
     stripped = line.strip()
     if not stripped.startswith("data:"):
         return None
@@ -385,7 +391,7 @@ def _parse_sse_delta(line: str) -> str | None:
         return None
     raw_usage = chunk.get("usage")
     if isinstance(raw_usage, dict):
-        return None  # usage 块不是文本增量
+        return raw_usage  # usage 块不是文本增量
     choices = chunk.get("choices")
     delta = (choices[0].get("delta") or {}) if choices else {}
     content = delta.get("content")

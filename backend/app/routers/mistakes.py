@@ -7,6 +7,7 @@ from app.database import get_db
 from app.dependencies import current_user_id
 from app.schemas.mistake import MistakeCardOut, MistakeCollect, MistakeListResponse, MistakeReview
 from app.services import mistake_service
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/mistakes", tags=["mistakes"])
 
@@ -18,6 +19,8 @@ def collect(
     user_id: int = Depends(current_user_id),
 ) -> MistakeCardOut:
     card = mistake_service.collect_question(db, user_id, request.question_id, request.my_answer)
+    record_event(db, user_id=user_id, module="huilan", name="mistake_collect")
+    db.commit()
     return MistakeCardOut.model_validate(card, from_attributes=True)
 
 

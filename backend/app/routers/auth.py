@@ -21,6 +21,7 @@ from app.schemas.auth import (
 )
 from app.services import auth_service
 from app.services.password_service import hash_password, verify_password
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
 
@@ -57,6 +58,7 @@ def _auth_user_payload(user: User) -> AuthUser:
         username=user.username,
         nickname=user.nickname,
         status=user.status,
+        role=getattr(user, "role", None) or "user",
         created_at=user.created_at,
         last_login_at=user.last_login_at,
     )
@@ -77,6 +79,8 @@ def register(body: RegisterRequest, response: Response, db: Session = Depends(ge
         nickname=body.nickname,
     )
     db.add(user)
+    db.flush()
+    record_event(db, user_id=user.id, module="auth", name="register")
     db.commit()
     db.refresh(user)
     token, _ = auth_service.create_session(db, user.id)
@@ -97,6 +101,7 @@ def login(body: LoginRequest, response: Response, db: Session = Depends(get_db))
         raise HTTPException(status_code=403, detail="账户当前不可用，请联系维护者")
 
     user.last_login_at = utcnow()
+    record_event(db, user_id=user.id, module="auth", name="login")
     db.commit()
     token, _ = auth_service.create_session(db, user.id)
     _set_session_cookie(response, token)

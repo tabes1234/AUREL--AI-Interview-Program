@@ -23,6 +23,7 @@ from app.schemas.interview import (
 )
 from app.services import interview_service
 from app.services.ark_client import ArkClient, ArkError
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1", tags=["interviews"])
 
@@ -94,6 +95,8 @@ def create_interview(
         task = interview_service.create_task(db, request, client, user_id=user_id)
     except ArkError as exc:
         raise interview_service.map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="wenlan", name="task_create")
+    db.commit()
     return _task_detail(task)
 
 
@@ -112,6 +115,8 @@ def generate_question_set(
         task = interview_service.create_task_from_catalog(db, request, client, user_id=user_id)
     except ArkError as exc:
         raise interview_service.map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="wenlan", name="task_create")
+    db.commit()
     return _task_detail(task)
 
 
@@ -199,6 +204,8 @@ def finish_interview(
         raise HTTPException(status_code=409, detail=str(exc)) from exc
     except ArkError as exc:
         raise interview_service.map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="wenlan", name="report_generate")
+    db.commit()
     return FinishResponse(task_id=task.id, status=task.status, report_id=report.id)
 
 

@@ -72,6 +72,7 @@ class AuthUser(BaseModel):
     username: str
     nickname: str
     status: str
+    role: str = "user"
     created_at: datetime
     last_login_at: datetime | None
 

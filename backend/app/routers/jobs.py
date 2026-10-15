@@ -24,6 +24,7 @@ from app.schemas.resume import ResumeContent
 from app.services import interview_service, jd_analysis, jd_matching, knowledge_service
 from app.services import resume_service
 from app.services.ark_client import ArkClient, ArkError
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/jobs", tags=["jobs"])
 
@@ -105,6 +106,7 @@ def analyze_jd(
         source_job_id=source_job_id,
     )
     db.add(analysis)
+    record_event(db, user_id=user_id, module="zhigang", name="jd_analyze")
     db.commit()
     db.refresh(analysis)
     _sync_skill_graph(db, analysis)

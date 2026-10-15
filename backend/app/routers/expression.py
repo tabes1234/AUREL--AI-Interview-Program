@@ -32,6 +32,7 @@ from app.services import audio_metrics
 from app.services.ark_client import ArkClient
 from app.services.asr_service import AsrError, asr_status, get_asr_provider
 from app.services.expression_workflow import iter_expression_workflow, run_expression_workflow
+from app.services.usage_tracking import record_event
 
 logger = logging.getLogger("aurel.expression")
 
@@ -245,6 +246,7 @@ def _persist_workflow_record(
         user_id=user_id,
     )
     db.add(record)
+    record_event(db, user_id=user_id, module="tinglan", name="expression_analyze")
     db.commit()
     db.refresh(record)
     return record

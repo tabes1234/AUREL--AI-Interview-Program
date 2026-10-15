@@ -16,6 +16,7 @@ from app.schemas.features import (
 )
 from app.services.ark_client import ArkClient
 from app.services.matching_service import match_resume
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/matching", tags=["matching"])
 
@@ -50,6 +51,7 @@ def match_resume_api(
         user_id=user_id,
     )
     db.add(record)
+    record_event(db, user_id=user_id, module="heqi", name="match_run")
     db.commit()
     db.refresh(record)
 

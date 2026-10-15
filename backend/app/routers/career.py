@@ -56,6 +56,7 @@ from app.services import career_analyst, career_workflow
 from app.services.ark_client import ArkClient, ArkError
 from app.services import career_memory
 from app.services.interview_service import map_ark_error
+from app.services.usage_tracking import record_event
 
 logger = logging.getLogger("aurel.career")
 
@@ -267,6 +268,7 @@ def send_message(
     if conversation.title == DEFAULT_TITLE:
         conversation.title = content[:16]
     conversation.updated_at = utcnow()
+    record_event(db, user_id=user_id, module="zhitu", name="message_send")
     db.commit()
     db.refresh(user_message)
     db.refresh(assistant_message)
@@ -451,6 +453,7 @@ def stream_message(
 ) -> StreamingResponse:
     """发送消息并流式接收小鸥回复（SSE）。"""
     conversation = _get_owned_conversation(db, conversation_id, user_id)
+    record_event(db, user_id=user_id, module="zhitu", name="message_send")
     return StreamingResponse(
         _stream_reply(db, client, user_id, conversation, payload.content, regenerate=False),
         media_type="text/event-stream",
@@ -467,6 +470,7 @@ def regenerate_message(
 ) -> StreamingResponse:
     """重新生成最后一条 AI 回复（替换旧回复，真实再次调用模型）。"""
     conversation = _get_owned_conversation(db, conversation_id, user_id)
+    record_event(db, user_id=user_id, module="zhitu", name="message_send")
     return StreamingResponse(
         _stream_reply(db, client, user_id, conversation, None, regenerate=True),
         media_type="text/event-stream",

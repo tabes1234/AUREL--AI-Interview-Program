@@ -1,4 +1,12 @@
 import type {
+  AdminAiResponse,
+  AdminAuditResponse,
+  AdminModulesResponse,
+  AdminOverview,
+  AdminTimeRange,
+  AdminTrends,
+  AdminUserDetail,
+  AdminUsersPage,
   AiStatus,
   AnswerResponse,
   AuthMeResponse,
@@ -160,6 +168,17 @@ function post<TResponse>(path: string, body?: unknown): Promise<TResponse> {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body ?? {}),
   })
+}
+
+/** 把可选查询参数对象序列化为 `?a=1&b=2`；空值自动跳过。 */
+function toQuery(params: object): string {
+  const search = new URLSearchParams()
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null || value === '') continue
+    search.set(key, String(value))
+  }
+  const qs = search.toString()
+  return qs ? `?${qs}` : ''
 }
 
 function put<TResponse>(path: string, body?: unknown): Promise<TResponse> {
@@ -594,6 +613,58 @@ export const api = {
 
   logout(): Promise<{ ok: boolean }> {
     return post<{ ok: boolean }>('/auth/logout')
+  },
+
+  // ---------- 使用事件上报（登录用户的页面访问） ----------
+  reportPageView(module: string, name = 'page_view'): Promise<{ recorded: boolean }> {
+    return post<{ recorded: boolean }>('/usage/page-view', { module, name })
+  },
+
+  // ---------- 观澜管理中心（仅管理员；服务端校验角色） ----------
+  adminOverview(params: AdminTimeRange): Promise<AdminOverview> {
+    return request<AdminOverview>(`/admin/overview${toQuery(params)}`)
+  },
+
+  adminTrends(params: AdminTimeRange): Promise<AdminTrends> {
+    return request<AdminTrends>(`/admin/trends${toQuery(params)}`)
+  },
+
+  adminUsers(
+    params: AdminTimeRange & {
+      q?: string
+      status?: string
+      registered_start?: string
+      registered_end?: string
+      sort?: string
+      page?: number
+      page_size?: number
+    },
+  ): Promise<AdminUsersPage> {
+    return request<AdminUsersPage>(`/admin/users${toQuery(params)}`)
+  },
+
+  adminUserDetail(userId: number, params: AdminTimeRange): Promise<AdminUserDetail> {
+    return request<AdminUserDetail>(`/admin/users/${userId}${toQuery(params)}`)
+  },
+
+  adminUpdateUserStatus(userId: number, status: 'active' | 'disabled'): Promise<{ ok: boolean; status: string; changed: boolean }> {
+    return post(`/admin/users/${userId}/status`, { status })
+  },
+
+  adminModules(params: AdminTimeRange): Promise<AdminModulesResponse> {
+    return request<AdminModulesResponse>(`/admin/modules${toQuery(params)}`)
+  },
+
+  adminAi(params: AdminTimeRange): Promise<AdminAiResponse> {
+    return request<AdminAiResponse>(`/admin/ai${toQuery(params)}`)
+  },
+
+  adminAudit(page = 1, pageSize = 20): Promise<AdminAuditResponse> {
+    return request<AdminAuditResponse>(`/admin/audit?page=${page}&page_size=${pageSize}`)
+  },
+
+  adminExport(kind: 'overview' | 'users' | 'ai', params: AdminTimeRange): Promise<{ blob: Blob; filename: string }> {
+    return requestBlob(`/admin/export?kind=${encodeURIComponent(kind)}${toQuery(params)}`)
   },
 
   // ---------- 知岗：JD 解析与联动 ----------

@@ -1,6 +1,44 @@
 # AUREL 观澜 — 项目状态
 
-更新时间：2026-10-15（知潮跨行业扩容 + 拾贝简历模板指南库 + 全量回归）
+更新时间：2026-10-15（观澜管理中心 + 知潮跨行业扩容 + 拾贝简历模板指南库）
+
+## 观澜管理中心 AUREL ADMIN（已完成，2026-10-15）
+
+独立管理员数据统计中心（路由 `/admin`，不进普通用户导航），所有统计来自真实数据库记录，无伪造数字。
+
+### 管理员权限体系
+
+- [models.py](../backend/app/models.py)：`users` 表新增 `role` 列（`user`/`admin`，幂等迁移带 `DEFAULT 'user'` 回填旧行）；注册接口不允许自设角色
+- [dependencies.py](../backend/app/dependencies.py)：`get_admin_user` 依赖——登录 + 服务端角色校验，普通用户 403、未登录 401，前端状态无法绕过
+- [scripts/create_admin.py](../backend/scripts/create_admin.py)：受控创建/提升管理员（getpass 交互或 `--password-env` 环境变量读密码，无硬编码凭证）；本机已创建 `aurel_admin`
+- 前端 [RequireAdmin.tsx](../frontend/src/components/admin/RequireAdmin.tsx)：未登录跳 /auth，非 admin 显示 403 页（服务端二次校验为准）
+
+### 数据采集
+
+- 新表 `usage_events`（page_view/action × module 白名单 15 模块 × status）与 `admin_audit_logs`（管理员敏感操作审计）；`llm_call_records` 新增 `user_id` 列归因
+- [usage_tracking.py](../backend/app/services/usage_tracking.py)：`record_event` 随业务事务落库；页面访问 30 秒同用户同页面去重，防刷新刷量
+- 前端 [usageTracker.ts](../frontend/src/lib/usageTracker.ts) 在 AppLayout 挂载页面访问上报；注册/登录、面试创建/完成、知途消息、图谱分析、简历创建/优化、合契匹配、知岗解析、错题、挑战、表达分析、文档上传、路径对比等真实业务操作后端打点
+- [ark_client.py](../backend/app/services/ark_client.py)：流式调用加 `stream_options.include_usage`，流式也能记录真实 Token；[middleware.py](../backend/app/middleware.py) 经 contextvars 绑定请求用户身份到 AI 调用记录
+
+### 后端管理接口（/api/v1/admin/*，全部 get_admin_user 保护）
+
+overview（总览+近期活动）、trends（按日趋势，UTC+8 分桶）、users（SQL 聚合排序+服务端分页+搜索筛选）、users/{id}（单用户功能/AI 统计）、modules（模块统计）、ai（AI 请求/成功率/P50/P95/Token/错误分类/脱敏错误明细）、audit（审计分页）、export（CSV 导出 utf-8-sig，写入审计）、users/{id}/status（暂停/恢复：校验、禁改自己、真实撤销会话、写审计）
+
+### 前端页面（/admin，独立布局）
+
+数据总览（紧凑指标行+趋势图+口径说明+采集起点标注+导出）、用户使用（搜索/筛选/分页表格+暂停恢复确认弹窗）、用户详情、功能分析（模块表+单模块趋势）、AI 运行（指标+服务/模型分布+错误分类+脱敏失败明细）、操作审计；自研 SVG 折线/条形图（悬停读数、空态）；统计时区统一 UTC+8 并在界面标明
+
+### 测试与验证（实际执行）
+
+- 后端 pytest 全量通过（新增 [test_admin_stats.py](../backend/tests/test_admin_stats.py) 17 例：401/403 边界、真实计数、UTC+8 分桶、分页搜索、P50/P95、脱敏、状态变更撤销会话+审计、导出、打点去重）
+- 前端 eslint / tsc / vite build 全绿
+- 浏览器实测（真实账号）：管理员全页面渲染正常，时间筛选切 7 天数据同步更新（真实数字：8 用户、AI 请求 358、成功率 89.7%、平均耗时 14.58s、P95 43.41s）；AI 页展示真实 Token 用量（278,198 tokens）；审计页正确空状态；普通用户访问 /admin 正确显示 403；console 零 error
+
+### 口径说明（诚实标注）
+
+- `usage_events` 与 `user_id` 归因自本次上线起采集，界面标注采集起点，不伪装历史曲线；功能「历史累计」由各业务表真实统计
+- 首段输出时间、取消数等暂不可真实采集的指标显示「尚未采集」，未用 HTTP 总耗时冒充
+
 
 ## 知潮跨行业扩容与拾贝模板库（已完成，2026-10-15）
 

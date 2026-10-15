@@ -2,6 +2,7 @@ import { BadgeCheck, CalendarDays, Clock3, LogOut, AtSign, UserRound } from 'luc
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/useAuth'
+import { BarChart3 } from 'lucide-react'
 
 const STATUS_LABELS: Record<string, string> = {
   active: '使用中',
@@ -80,6 +81,19 @@ export default function MePage() {
           ))}
         </dl>
       </section>
+
+      {user.role === 'admin' && (
+        <a
+          href="/admin"
+          className="mt-4 flex items-center justify-between rounded-2xl border border-line/80 bg-white/90 px-5 py-4 shadow-card transition hover:border-ripple"
+        >
+          <span>
+            <span className="block text-sm font-semibold text-ink">观澜管理中心</span>
+            <span className="mt-0.5 block text-xs text-ink-soft">查看用户使用、功能数据与 AI 运行情况（仅管理员）</span>
+          </span>
+          <BarChart3 className="h-4 w-4 shrink-0 text-brand-600" aria-hidden="true" />
+        </a>
+      )}
 
       <div className="mt-6 flex justify-end">
         <button

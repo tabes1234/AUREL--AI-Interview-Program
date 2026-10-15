@@ -1,8 +1,9 @@
 """通用依赖：从中间件注入的会话身份获取当前用户。"""
 
-from fastapi import HTTPException, Request
+from fastapi import Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
+from app.database import get_db
 from app.models import User
 
 
@@ -22,4 +23,15 @@ def get_current_user(request: Request, db: Session) -> User:
     user = db.get(User, user_id)
     if user is None or user.status != "active":
         raise HTTPException(status_code=401, detail="账户不存在或不可用，请重新登录")
+    return user
+
+
+def get_admin_user(request: Request, db: Session = Depends(get_db)) -> User:
+    """管理中心专用依赖：登录 + 服务端管理员角色校验。
+
+    普通用户一律 403；角色只来自数据库 users.role，前端状态无法绕过。
+    """
+    user = get_current_user(request, db)
+    if (getattr(user, "role", None) or "user") != "admin":
+        raise HTTPException(status_code=403, detail="需要管理员权限")
     return user

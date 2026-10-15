@@ -7,6 +7,7 @@ from app.config import SERVICE_NAME, VERSION, cors_origins
 from app.logging_setup import setup_logging
 from app.middleware import AccessControlMiddleware, RateLimitMiddleware
 from app.routers import (
+    admin,
     announcements,
     auth,
     career,
@@ -27,6 +28,7 @@ from app.routers import (
     resumes,
     skills,
     stats,
+    usage,
 )
 
 setup_logging()
@@ -94,6 +96,8 @@ app.include_router(career.router)
 app.include_router(career_intelligence.router)
 app.include_router(observability.router)
 app.include_router(privacy.router)
+app.include_router(usage.router)
+app.include_router(admin.router)
 
 # ---------- 单容器部署：托管前端构建产物（frontend/dist 存在时生效） ----------
 # 本地开发仍由 Vite dev server 服务前端；dist 不存在时以下路由不注册，API 行为不变

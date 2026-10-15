@@ -13,6 +13,7 @@ from app.schemas.features import (
 )
 from app.services import knowledge_service
 from app.services.knowledge_service import DocumentError
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/knowledge", tags=["knowledge"])
 
@@ -69,6 +70,8 @@ async def upload_document(
     document = knowledge_service.create_document(
         db, title=filename.rsplit(".", 1)[0], filename=filename, text=text, user_id=user_id
     )
+    record_event(db, user_id=user_id, module="zhicang", name="document_upload")
+    db.commit()
     return KnowledgeDocumentOut(
         id=document.id,
         title=document.title,

@@ -34,6 +34,7 @@ from app.models import JobAnalysis
 from app.services import interview_service, resume_export, resume_service
 from app.services.ark_client import ArkClient, ArkError, ArkNotConfiguredError
 from app.services.knowledge_service import DocumentError, extract_text
+from app.services.usage_tracking import record_event
 from app.services.resume_templates import (
     RESUME_TEMPLATES,
     TEMPLATE_BY_ID,
@@ -152,6 +153,8 @@ def create_resume(
     resume = resume_service.create_resume(
         db, title=request.title, template_id=template_id, content=request.content, user_id=user_id
     )
+    record_event(db, user_id=user_id, module="lvli", name="resume_create")
+    db.commit()
     return _detail(resume)
 
 
@@ -332,6 +335,8 @@ def optimize_resume_for_job(
         raise interview_service.map_ark_error(exc) from exc
     except ArkError as exc:
         raise interview_service.map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="lvli", name="resume_optimize")
+    db.commit()
     return ResumeOptimizeForJobResponse(**result)
 
 

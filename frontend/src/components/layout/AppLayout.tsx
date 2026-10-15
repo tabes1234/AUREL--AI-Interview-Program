@@ -1,12 +1,13 @@
 import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { PageBackground } from '../PageBackground'
 import { PointerGlow } from '../PointerGlow'
 import { XiaouCompanion } from '../XiaouCompanion'
 import { LogoLockup } from '../LogoMark'
 import { useOnboardingAutoStart } from '../onboarding/use-onboarding-autostart'
+import { trackPageView } from '../../lib/usageTracker'
 import { SidebarNav } from './SidebarNav'
 
 /** 行舟布局：桌面端左侧渐变导航 + 移动端抽屉导航 + 页面切换动画 */
@@ -17,6 +18,11 @@ export default function AppLayout() {
 
   // 首次进入行舟时自动开启一次引航（已完成或跳过后不再弹出）
   useOnboardingAutoStart(location.pathname)
+
+  // 页面访问上报（观澜管理中心数据源；失败静默，不影响页面）
+  useEffect(() => {
+    trackPageView(location.pathname)
+  }, [location.pathname])
 
   // 路由变化时关闭移动端抽屉（渲染期间调整 state 的官方推荐模式）
   if (prevPathname !== location.pathname) {

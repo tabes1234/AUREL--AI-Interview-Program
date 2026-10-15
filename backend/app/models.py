@@ -32,6 +32,9 @@ class User(Base):
     email: Mapped[str | None] = mapped_column(String(120), nullable=True)
     # active / disabled
     status: Mapped[str] = mapped_column(String(20), default="active")
+    # user / admin；管理员只能通过受控脚本（backend/scripts/create_admin.py）设置，
+    # 注册接口不允许自设角色
+    role: Mapped[str] = mapped_column(String(20), default="user", server_default="user")
     created_at: Mapped[datetime] = mapped_column(DateTime(), default=utcnow)
     last_login_at: Mapped[datetime | None] = mapped_column(DateTime(), nullable=True)
 
@@ -249,6 +252,8 @@ class LlmCallRecord(Base):
     __tablename__ = "llm_call_records"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    # 触发调用的登录用户（请求上下文注入；历史数据与运维通道调用为 NULL）
+    user_id: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
     service: Mapped[str] = mapped_column(String(50), index=True)
     model: Mapped[str] = mapped_column(String(120))
     prompt_version: Mapped[str] = mapped_column(String(20), default="unversioned")
@@ -764,6 +769,43 @@ class CareerEvalRun(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(), default=utcnow)
 
 
+class UsageEvent(Base):
+    """管理中心：使用事件采集表（观澜管理中心数据来源之一）。
+
+    - event_type=page_view：前端路由级页面访问（仅登录后工作区页面上报）；
+    - event_type=action：后端真实业务操作（注册/登录/出题/评分/解析等成功落库后记录）。
+    只记录事件元数据，绝不写入聊天正文、简历内容、密码或验证码。
+    自本表上线起采集，之前的历史业务量由各业务表真实数据直接统计。
+    """
+
+    __tablename__ = "usage_events"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id"), nullable=True, index=True
+    )
+    event_type: Mapped[str] = mapped_column(String(20))  # page_view / action
+    module: Mapped[str] = mapped_column(String(40), index=True)  # 模块标识（如 wenlan）
+    name: Mapped[str] = mapped_column(String(60))  # 事件名（如 task_create / page_view）
+    status: Mapped[str | None] = mapped_column(String(20), nullable=True)  # success / error
+    created_at: Mapped[datetime] = mapped_column(DateTime(), default=utcnow, index=True)
+
+
+class AdminAuditLog(Base):
+    """管理中心：管理员敏感操作审计（账号状态变更、数据导出等）。"""
+
+    __tablename__ = "admin_audit_logs"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    admin_user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+    action: Mapped[str] = mapped_column(String(60))  # user_status_update / export_stats / ...
+    target_type: Mapped[str] = mapped_column(String(40), default="")
+    target_id: Mapped[str] = mapped_column(String(60), default="")
+    # 非敏感操作详情（如变更前后的状态值、导出的统计范围）
+    detail: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(), default=utcnow, index=True)
+
+
 def _rebuild_legacy_users_table(connection) -> None:
     """旧库 users 表为「邮箱 NOT NULL + 唯一」结构，重建为用户名密码结构（幂等）。
 
@@ -821,6 +863,8 @@ def ensure_sqlite_columns() -> None:
     from app.database import engine
 
     statements = (
+        ("users", "role", "VARCHAR(20) DEFAULT 'user'"),
+        ("llm_call_records", "user_id", "INTEGER"),
         ("career_conversations", "summary", "TEXT"),
         ("career_conversations", "summarized_until_id", "INTEGER"),
         ("job_analyses", "source_job_id", "INTEGER"),

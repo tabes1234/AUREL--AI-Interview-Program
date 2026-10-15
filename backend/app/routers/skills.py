@@ -27,6 +27,7 @@ from app.services.skill_service import (
     build_skill_profile,
     build_training_recommendation,
 )
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/skills", tags=["skills"])
 
@@ -144,6 +145,8 @@ def gap_analysis(
             }
         )
 
+    record_event(db, user_id=user_id, module="guanji", name="gap_analysis")
+    db.commit()
     return GapAnalysisResponse(
         position=analysis.title,
         has_data=profile.has_data,

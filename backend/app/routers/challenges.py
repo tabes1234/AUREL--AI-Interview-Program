@@ -14,6 +14,7 @@ from app.schemas.challenge import (
 from app.services import challenge_service
 from app.services.ark_client import ArkClient, ArkError
 from app.services.interview_service import map_ark_error
+from app.services.usage_tracking import record_event
 
 router = APIRouter(prefix="/api/v1/challenges", tags=["challenges"])
 
@@ -29,6 +30,8 @@ def create(
         run = challenge_service.create_challenge(db, user_id, request, client)
     except ArkError as exc:
         raise map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="duheng", name="challenge_create")
+    db.commit()
     return ChallengeOut.model_validate(run, from_attributes=True)
 
 
@@ -77,4 +80,6 @@ def submit(
         run = challenge_service.submit_run(db, user_id, run_id, request, client)
     except ArkError as exc:
         raise map_ark_error(exc) from exc
+    record_event(db, user_id=user_id, module="duheng", name="challenge_submit")
+    db.commit()
     return ChallengeOut.model_validate(run, from_attributes=True)

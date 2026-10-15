@@ -38,6 +38,9 @@ WRITE_METHODS = ("POST", "PUT", "PATCH", "DELETE")
 
 
 def is_auth_exempt(path: str) -> bool:
+    # 非 /api 路径（前端页面与静态资源）不涉用户数据，单容器部署时由后端托管 SPA，直接放行
+    if not path.startswith("/api"):
+        return True
     return any(path.startswith(prefix) for prefix in AUTH_EXEMPT_PREFIXES)
 
 

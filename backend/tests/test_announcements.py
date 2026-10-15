@@ -49,7 +49,7 @@ def test_announcements_early_history_retired():
     assert not ids & retired_ids
     # 保留的普通公告必须都带日期（近期记录，无日期条目只允许是置顶档案）
     normal = [i for i in items if not i.get("pinned")]
-    assert len(normal) == 5
+    assert len(normal) == 6
     assert all(i["date"] for i in normal)
 
 
@@ -61,7 +61,7 @@ def test_tech_archive_pinned_first_and_single():
     assert items[0]["importance"] == "重要"
     assert "置顶公告" in items[0]["tags"]
     # 置顶公告必须带更新时间，且早于它的普通公告不会被排到前面
-    assert items[0]["updated_at"] == "2026-10-14"
+    assert items[0]["updated_at"] == "2026-10-15"
 
 
 def test_tech_archive_detail_sections():

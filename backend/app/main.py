@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+from pathlib import Path
+
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import SERVICE_NAME, VERSION, cors_origins
@@ -92,3 +94,25 @@ app.include_router(career.router)
 app.include_router(career_intelligence.router)
 app.include_router(observability.router)
 app.include_router(privacy.router)
+
+# ---------- 单容器部署：托管前端构建产物（frontend/dist 存在时生效） ----------
+# 本地开发仍由 Vite dev server 服务前端；dist 不存在时以下路由不注册，API 行为不变
+_FRONTEND_DIST = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
+
+if _FRONTEND_DIST.is_dir():
+    from fastapi.responses import FileResponse
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def spa_fallback(full_path: str) -> FileResponse:
+        """静态文件直出；其余路径一律回退 index.html（SPA 前端路由）。"""
+        if full_path.startswith("api/") or full_path == "api":
+            raise HTTPException(status_code=404, detail="接口不存在")
+        candidate = (_FRONTEND_DIST / full_path).resolve()
+        # 防目录穿越：解析后必须仍在 dist 目录内
+        if (
+            full_path
+            and str(candidate).startswith(str(_FRONTEND_DIST))
+            and candidate.is_file()
+        ):
+            return FileResponse(candidate)
+        return FileResponse(_FRONTEND_DIST / "index.html")

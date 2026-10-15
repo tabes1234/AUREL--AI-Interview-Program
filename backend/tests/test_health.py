@@ -26,6 +26,14 @@ def test_unknown_api_path_returns_404(api_client) -> None:
     assert response.status_code == 404
 
 
-def test_unknown_root_path_returns_404(api_client) -> None:
+def test_unknown_root_path_404_or_spa_fallback(api_client) -> None:
+    """无前端产物时未知路径 404；单容器托管（frontend/dist 存在）时回退 SPA 页面 200。"""
+    from pathlib import Path
+
+    repo_dist = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
     response = api_client.get("/no-such-page")
-    assert response.status_code == 404
+    if repo_dist.is_dir():
+        assert response.status_code == 200
+        assert "text/html" in response.headers["content-type"]
+    else:
+        assert response.status_code == 404

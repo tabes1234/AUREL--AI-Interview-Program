@@ -82,6 +82,18 @@ docker compose up -d --build
 
 后端容器启动前自动执行 `alembic upgrade head`；数据库与模型缓存在命名卷中持久化。
 
+### 单容器部署（Render / Fly.io 等托管平台）
+
+```bash
+docker build -f Dockerfile.app -t aurel-app .
+docker run -p 8000:8000 --env-file .env aurel-app
+# 打开 http://127.0.0.1:8000 —— 前端页面与 API 同源，一个容器运行整站
+```
+
+前端构建产物由 FastAPI 直接托管（检测到 `frontend/dist` 时自动启用，SPA 路由回退 `index.html`）；
+平台注入的 `PORT` 环境变量会被自动使用。注意：SQLite 数据存于容器文件系统，
+托管平台重建容器会清空数据，重要数据请自行挂载持久卷。
+
 ## 安全约定
 
 - 模型 API Key 只在 Python 后端从环境变量读取，不进入前端代码或 `VITE_*` 变量，日志自动脱敏

@@ -22,6 +22,20 @@
 - 浏览器实测：拾贝页 22 条模板按 9 行业分组渲染、筛选与来源外链正常；知潮搜索「招商银行/宁德时代/迈瑞」均命中新岗位；/app、/career-guide、/job-library 全程 console 零 error
 - GitHub Actions 双 job（前端 lint/tsc/build + 后端 pytest）对 90dcc67 与 5248814 两次提交均全绿
 
+### 澜讯与观澜之意内容更新（2026-10-15）
+
+- 澜讯新增阶段公告「百川入潮，拾贝成串」（v0.9）：知潮跨行业扩容、拾贝开滩、代码分割提速、CI 巡检四项如实记录
+- 置顶技术档案跟进至 2026-10-15：测试基线 309 → 315、`updated_at` 同步更新
+- 观澜之意简介补充：知潮跨行业意象、拾贝条目加入能力清单、「整站可装进单只容器」部署说明
+- 仓库描述更新（GitHub API）：含品牌座右铭与功能一句话概览
+
+### 单容器部署能力（2026-10-15）
+
+- [Dockerfile.app](../Dockerfile.app)：前端构建产物打进后端镜像，一个容器运行整站（适配 Render / Fly.io / HF Spaces 免费托管，`PORT` 自动适配）
+- [main.py](../backend/app/main.py)：检测到 `frontend/dist` 时自动托管静态文件并对 SPA 路由回退 `index.html`；API 未命中不受影响（401/404 语义不变）
+- [middleware.py](../backend/app/middleware.py)：非 `/api` 路径（前端页面与静态资源）不再要求登录会话
+- 本地生产模式实测通过：`/`、`/app`、`/assets/*` 200，`/api/v1/health` JSON 200，登录后 API 未命中 404
+
 ## 仓库清理与工程化（已完成，2026-10-14）
 
 ### 仓库与文档清理

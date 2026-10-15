@@ -102,7 +102,9 @@ _FRONTEND_DIST = Path(__file__).resolve().parent.parent.parent / "frontend" / "d
 if _FRONTEND_DIST.is_dir():
     from fastapi.responses import FileResponse
 
-    @app.get("/{full_path:path}", include_in_schema=False)
+    @app.api_route(
+        "/{full_path:path}", methods=["GET", "HEAD"], include_in_schema=False
+    )
     async def spa_fallback(full_path: str) -> FileResponse:
         """静态文件直出；其余路径一律回退 index.html（SPA 前端路由）。"""
         if full_path.startswith("api/") or full_path == "api":

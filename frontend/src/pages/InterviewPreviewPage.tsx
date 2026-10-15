@@ -1,9 +1,8 @@
-import { ArrowLeft, Check, ClipboardList, Info, MessageSquareText, Send } from 'lucide-react'
+﻿import { ArrowLeft, Check, ClipboardList, Info, MessageSquareText, Send } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { PageBackground } from '../components/PageBackground'
-import { PointerGlow } from '../components/PointerGlow'
 import { LogoMark } from '../components/LogoMark'
 import { PreviewBanner } from '../components/PreviewBanner'
 import { Badge } from '../components/ui/Badge'
@@ -44,7 +43,6 @@ export default function InterviewPreviewPage() {
   return (
     <div className="relative min-h-screen bg-surface">
       <PageBackground scene="workspace" />
-      <PointerGlow intensity="whisper" />
       {/* 顶栏：无底色，直接置于雪景之上 */}
       <header className="relative">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">

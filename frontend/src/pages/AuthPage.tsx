@@ -1,10 +1,9 @@
-import { AtSign, KeyRound, Loader2, ShieldCheck, UserRound } from 'lucide-react'
+﻿import { AtSign, KeyRound, Loader2, ShieldCheck, UserRound } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState, type FormEvent } from 'react'
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { PageBackground } from '../components/PageBackground'
-import { PointerGlow } from '../components/PointerGlow'
 import { LogoLockup, LogoMark } from '../components/LogoMark'
 import { useAuth } from '../context/useAuth'
 import { cn } from '../lib/cn'
@@ -92,7 +91,6 @@ export default function AuthPage() {
     <div className="relative min-h-screen bg-surface">
       {/* 深夜蓝海场景背景（固定底层，pointer-events: none）+ 柔和光晕 */}
       <PageBackground scene="auth" />
-      <PointerGlow intensity="deep" />
       <div className="relative flex min-h-screen flex-col">
         <header className="flex items-center justify-between px-5 py-5 sm:px-8">
           <Link to="/" aria-label="返回观澜首页" className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-shallow">

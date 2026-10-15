@@ -1,5 +1,4 @@
-﻿import { PointerGlow } from '../components/PointerGlow'
-import { SiteHeader } from '../components/layout/SiteHeader'
+﻿import { SiteHeader } from '../components/layout/SiteHeader'
 import { WarmGreeting } from '../components/WarmGreeting'
 import { XiaouCompanion } from '../components/XiaouCompanion'
 import { BRAND } from '../lib/brand'
@@ -13,8 +12,6 @@ import { BRAND } from '../lib/brand'
 export default function HomePage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#0B2447]">
-      {/* 0. 海蓝微光：全站统一鼠标跟随，主页用最完整档（含极淡运动光痕） */}
-      <PointerGlow intensity="ambient" />
       {/* 1. 海景图片层：超宽图层缓慢漂移；移动端太阳更靠右避免压住标题，图片缺失时由深蓝底色兜底 */}
       <div
         aria-hidden="true"

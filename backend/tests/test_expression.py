@@ -30,6 +30,12 @@ from .conftest import use_fake_client
 
 # ---------- helpers ----------
 
+@pytest.fixture(autouse=True)
+def _default_auto_asr_provider(monkeypatch):
+    """显式固定 ASR_PROVIDER=auto，避免测试结果依赖本地 .env 配置差异。"""
+    monkeypatch.setenv("ASR_PROVIDER", "auto")
+
+
 def clear_asr_cache() -> None:
     asr_configured.cache_clear()
 

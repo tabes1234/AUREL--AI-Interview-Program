@@ -1,6 +1,12 @@
 # AUREL 观澜 — 项目状态
 
-更新时间：2026-10-15（观澜管理中心 + 知潮跨行业扩容 + 拾贝简历模板指南库）
+更新时间：2026-10-15（语音转录切换本地 Whisper + 移除鼠标跟随光效）
+
+## 语音转录与光效调整（2026-10-15 晚）
+
+- **语音转录只走本地 Whisper**：`backend/.env` 设 `ASR_PROVIDER=local_whisper`（强制本地，硅基流动路线按用户决定弃用，密钥已从本地 .env 与 Render 环境变量移除）；本地实测真实语音转录成功（provider=local_whisper:small，约 3 秒），模型经 hf-mirror 缓存完毕。线上 Render 免费实例内存（512MB）无法承载本地模型，线上转录如实显示未配置，不伪造
+- **移除鼠标跟随光效**（用户要求「不要轨迹流动了」）：删除 [PointerGlow.tsx] 组件及全部 9 处挂载（HomePage/AuthPage/AboutPage/AnnouncementsPage/TechArchivePage/AppLayout/AdminLayout/面试预览/面试进行）与 index.css 对应光效区块（含光痕 ::after），不影响其他动效
+- [test_expression.py](../backend/tests/test_expression.py) 新增 autouse fixture 显式固定 `ASR_PROVIDER=auto`，测试不再依赖本地 .env 差异；回归 332/332 通过
 
 ## 观澜管理中心 AUREL ADMIN（已完成，2026-10-15）
 

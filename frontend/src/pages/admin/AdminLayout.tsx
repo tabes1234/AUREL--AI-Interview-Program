@@ -1,7 +1,6 @@
-import { ArrowLeft, BarChart3, Bot, ClipboardList, LayoutDashboard, Users } from 'lucide-react'
+﻿import { ArrowLeft, BarChart3, Bot, ClipboardList, LayoutDashboard, Users } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { LogoLockup } from '../../components/LogoMark'
-import { PointerGlow } from '../../components/PointerGlow'
 import { useAuth } from '../../context/useAuth'
 
 const NAV_ITEMS = [
@@ -19,7 +18,6 @@ export default function AdminLayout() {
 
   return (
     <div className="relative min-h-screen bg-surface text-ink">
-      <PointerGlow intensity="whisper" />
       <div className="mx-auto flex min-h-screen w-full max-w-[1440px]">
         {/* 左侧管理导航 */}
         <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-line bg-white/70 py-6 backdrop-blur-sm md:flex">

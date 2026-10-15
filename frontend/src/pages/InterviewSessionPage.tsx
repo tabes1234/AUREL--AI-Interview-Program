@@ -1,4 +1,4 @@
-import {
+﻿import {
   AlertTriangle,
   ArrowLeft,
   Check,
@@ -12,7 +12,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api, ApiError } from '../api/client'
 import { PageBackground } from '../components/PageBackground'
-import { PointerGlow } from '../components/PointerGlow'
 import { LogoMark } from '../components/LogoMark'
 import { AurelLoading, AurelTaskStatus, useAsyncTask } from '../components/aurel-progress'
 import { Badge } from '../components/ui/Badge'
@@ -246,7 +245,6 @@ export default function InterviewSessionPage() {
   return (
     <div className="relative min-h-screen bg-surface">
       <PageBackground scene="workspace" />
-      <PointerGlow intensity="whisper" />
       {/* 顶栏：无底色，直接置于雪景之上 */}
       <header className="relative">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">

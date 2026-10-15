@@ -1,9 +1,8 @@
-import { Menu, X } from 'lucide-react'
+﻿import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { PageBackground } from '../PageBackground'
-import { PointerGlow } from '../PointerGlow'
 import { XiaouCompanion } from '../XiaouCompanion'
 import { LogoLockup } from '../LogoMark'
 import { useOnboardingAutoStart } from '../onboarding/use-onboarding-autostart'
@@ -32,9 +31,7 @@ export default function AppLayout() {
 
   return (
     <div className="relative min-h-screen bg-surface">
-      {/* 蓝调雪景场景背景（固定底层，pointer-events: none）+ 鼠标柔和光晕 */}
       <PageBackground scene="workspace" />
-      <PointerGlow intensity="whisper" />
       {/* 小鸥悬浮入口：全工作区共用，点击直达知途 AI 对话 */}
       <XiaouCompanion />
 

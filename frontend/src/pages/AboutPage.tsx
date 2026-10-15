@@ -1,7 +1,6 @@
-import { CheckCircle2 } from 'lucide-react'
+﻿import { CheckCircle2 } from 'lucide-react'
 import { SiteHeader } from '../components/layout/SiteHeader'
 import { PageBackground } from '../components/PageBackground'
-import { PointerGlow } from '../components/PointerGlow'
 import { XiaouCompanion } from '../components/XiaouCompanion'
 import { BRAND } from '../lib/brand'
 
@@ -29,7 +28,6 @@ export default function AboutPage() {
     <div className="relative min-h-screen bg-surface">
       {/* 日落海景场景背景（固定底层，pointer-events: none）+ 柔和光晕 */}
       <PageBackground scene="about" />
-      <PointerGlow intensity="soft" />
       <SiteHeader variant="solid" />
 
       <main className="page-enter relative mx-auto w-full max-w-4xl px-3 pb-16 pt-10 sm:px-5 sm:pt-14 lg:px-8">

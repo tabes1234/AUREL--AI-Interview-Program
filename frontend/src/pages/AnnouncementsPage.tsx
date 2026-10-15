@@ -1,9 +1,8 @@
-import { ArrowRight, FileText, Loader2, Megaphone, Pin, RefreshCw } from 'lucide-react'
+﻿import { ArrowRight, FileText, Loader2, Megaphone, Pin, RefreshCw } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api, ApiError } from '../api/client'
 import { PageBackground } from '../components/PageBackground'
-import { PointerGlow } from '../components/PointerGlow'
 import { SiteHeader } from '../components/layout/SiteHeader'
 import { XiaouCompanion } from '../components/XiaouCompanion'
 import { Badge } from '../components/ui/Badge'
@@ -118,7 +117,6 @@ export default function AnnouncementsPage() {
     <div className="relative min-h-screen bg-surface">
       {/* 午后薰衣草场景背景（固定底层，pointer-events: none）+ 柔和光晕 */}
       <PageBackground scene="notices" />
-      <PointerGlow intensity="faint" />
       <SiteHeader variant="solid" />
 
       {/* pb-28：为右下角小鸥悬浮入口预留空间，避免压住列表末尾内容 */}

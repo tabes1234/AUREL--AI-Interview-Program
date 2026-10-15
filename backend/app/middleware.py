@@ -56,13 +56,23 @@ def client_ip(request: Request) -> str:
 
 
 def _origin_rejected(request: Request) -> bool:
-    """跨站写请求防御：携带 Origin 时必须属于受信任来源。"""
+    """跨站写请求防御：携带 Origin 时必须属于受信任来源或同源请求。
+
+    同源判定：Origin 的 host 与请求 Host（或反代透传的 X-Forwarded-Host）一致，
+    说明页面与 API 同源，天然可信——单容器部署到任意域名均零配置可用。
+    """
     if request.method not in WRITE_METHODS:
         return False
     origin = request.headers.get("origin", "")
     if not origin:
         return False
-    return origin not in cors_origins()
+    if origin in cors_origins():
+        return False
+    from urllib.parse import urlparse
+
+    origin_host = urlparse(origin).netloc
+    request_host = request.headers.get("x-forwarded-host") or request.headers.get("host", "")
+    return not (origin_host and request_host and origin_host == request_host)
 
 
 class AccessControlMiddleware(BaseHTTPMiddleware):

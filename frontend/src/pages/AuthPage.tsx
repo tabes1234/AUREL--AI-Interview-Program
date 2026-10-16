@@ -87,6 +87,24 @@ export default function AuthPage() {
     setMessage(null)
   }
 
+  const handleTestLogin = async () => {
+    if (submitting) return
+    setSubmitting(true)
+    setMessage(null)
+    try {
+      await api.testLogin()
+      await refresh()
+      navigate(redirectTarget, { replace: true })
+    } catch (error) {
+      setMessage({
+        tone: 'error',
+        text: error instanceof Error ? error.message : '未能进入，请稍后再试',
+      })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <div className="relative min-h-screen bg-surface">
       {/* 深夜蓝海场景背景（固定底层，pointer-events: none）+ 柔和光晕 */}
@@ -335,6 +353,19 @@ export default function AuthPage() {
                   )}
                 </button>
               </form>
+              <div className="mt-5 border-t border-line pt-4">
+                <button
+                  type="button"
+                  onClick={handleTestLogin}
+                  disabled={submitting}
+                  className="w-full rounded-xl border border-line bg-white/70 px-4 py-3 text-sm font-semibold text-ink-soft transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {submitting ? '正在进入…' : '测试登录 · 一键进入体验'}
+                </button>
+                <p className="mt-2 text-center text-xs leading-5 text-ink-soft">
+                  无需注册，直接以访客身份体验全部功能；数据与其他账号相互独立
+                </p>
+              </div>
             </div>
           </motion.div>
         </main>

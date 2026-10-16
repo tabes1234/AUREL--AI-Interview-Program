@@ -233,3 +233,30 @@ def test_cross_user_data_isolation(api_client, db_session):
 
     owner_ids = [item["id"] for item in api_client.get("/api/v1/interviews").json()]
     assert task_id in owner_ids
+
+
+# ---------- 一键体验登录 ----------
+
+TEST_LOGIN = "/api/v1/auth/test-login"
+
+
+def test_test_login_creates_visitor_and_sets_cookie(anon_client, db_session):
+    resp = anon_client.post(TEST_LOGIN)
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["authenticated"] is True
+    assert body["user"]["username"] == "aurel_visitor"
+    _session_cookie(resp)
+
+
+def test_test_login_reuses_same_visitor_account(anon_client, db_session):
+    first = anon_client.post(TEST_LOGIN)
+    again = anon_client.post(TEST_LOGIN)
+    assert again.status_code == 200
+    assert again.json()["user"]["id"] == first.json()["user"]["id"]
+
+
+def test_test_login_can_be_disabled(anon_client, db_session, monkeypatch):
+    monkeypatch.setenv("ENABLE_TEST_LOGIN", "0")
+    resp = anon_client.post(TEST_LOGIN)
+    assert resp.status_code == 403

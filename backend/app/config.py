@@ -123,3 +123,8 @@ def session_ttl_hours() -> int:
 def cookie_secure() -> bool:
     """生产 HTTPS 环境应设为 true，使会话 Cookie 仅经 HTTPS 传输。"""
     return os.getenv("AUREL_COOKIE_SECURE", "").strip().lower() in ("1", "true", "yes")
+
+
+def test_login_enabled() -> bool:
+    """一键体验登录开关，默认开启；设 ENABLE_TEST_LOGIN=0 可关闭。"""
+    return os.getenv("ENABLE_TEST_LOGIN", "1").strip().lower() not in ("0", "false", "no")

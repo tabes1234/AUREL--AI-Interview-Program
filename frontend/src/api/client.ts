@@ -611,6 +611,10 @@ export const api = {
     })
   },
 
+  testLogin(): Promise<AuthMeResponse> {
+    return post<AuthMeResponse>('/auth/test-login')
+  },
+
   logout(): Promise<{ ok: boolean }> {
     return post<{ ok: boolean }>('/auth/logout')
   },

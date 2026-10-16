@@ -9,6 +9,8 @@ from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+import secrets
+
 from app import config
 from app.database import get_db
 from app.models import User, utcnow
@@ -103,6 +105,40 @@ def login(body: LoginRequest, response: Response, db: Session = Depends(get_db))
     user.last_login_at = utcnow()
     record_event(db, user_id=user.id, module="auth", name="login")
     db.commit()
+    token, _ = auth_service.create_session(db, user.id)
+    _set_session_cookie(response, token)
+    return AuthMeResponse(authenticated=True, user=_auth_user_payload(user))
+
+
+TEST_LOGIN_USERNAME = "aurel_visitor"
+
+
+@router.post("/test-login", response_model=AuthMeResponse)
+def test_login(response: Response, db: Session = Depends(get_db)):
+    """一键体验登录：仅进入固定的访客账号，不影响正常注册与登录。
+
+    - 访客账号首次调用时自动创建，密码为随机值且不对外提供
+    - 设 ENABLE_TEST_LOGIN=0 可整体关闭该入口
+    """
+    if not config.test_login_enabled():
+        raise HTTPException(status_code=403, detail="体验登录当前未开启")
+
+    user = _find_by_username(db, TEST_LOGIN_USERNAME)
+    if user is None:
+        user = User(
+            username=TEST_LOGIN_USERNAME,
+            password_hash=hash_password(secrets.token_urlsafe(24)),
+            nickname="体验访客",
+        )
+        db.add(user)
+        db.flush()
+    if user.status != "active":
+        raise HTTPException(status_code=403, detail="账户当前不可用，请联系维护者")
+
+    user.last_login_at = utcnow()
+    record_event(db, user_id=user.id, module="auth", name="test_login")
+    db.commit()
+    db.refresh(user)
     token, _ = auth_service.create_session(db, user.id)
     _set_session_cookie(response, token)
     return AuthMeResponse(authenticated=True, user=_auth_user_payload(user))

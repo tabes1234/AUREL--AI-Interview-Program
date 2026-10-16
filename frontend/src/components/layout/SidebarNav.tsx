@@ -1,5 +1,4 @@
 import {
-  AudioLines,
   Bird,
   BookOpenText,
   Briefcase,
@@ -97,7 +96,6 @@ const NAV_GROUPS: { title: string; entries: NavEntry[] }[] = [
       },
       { to: '/matching', label: '合契', hint: '简历与岗位匹配', icon: Puzzle, available: true },
       { to: '/knowledge', label: '知藏', hint: '知识库，出题有据', icon: BookOpenText, available: true },
-      { to: '/expression', label: '听澜', hint: '语音表达分析', icon: AudioLines, available: true },
       { to: '/concerto', label: '协奏', hint: '三席同台的表达协作台', icon: Users, available: true },
     ],
   },

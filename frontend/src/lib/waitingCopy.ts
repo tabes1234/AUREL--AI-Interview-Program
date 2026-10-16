@@ -57,10 +57,6 @@ export type WaitScene =
   // 知藏：知识检索
   | 'zhicang.search'
   | 'zhicang.organize'
-  // 听澜：语音分析
-  | 'tinglan.audio'
-  | 'tinglan.expression'
-  | 'tinglan.advice'
   // 协奏：多阶段任务
   | 'xiezou.prepare'
   | 'xiezou.summary'
@@ -126,11 +122,6 @@ export const WAITING_COPY: Record<WaitScene, string[]> = {
   // ---------- 知藏 ----------
   'zhicang.search': ['正在沿着你的线索寻找相关资料……'],
   'zhicang.organize': ['正在把分散的信息归纳为清楚的脉络……'],
-
-  // ---------- 听澜 ----------
-  'tinglan.audio': ['正在整理音频中的有效信息……'],
-  'tinglan.expression': ['正在梳理语速、停顿与表达表现……', '正在把这些线索归拢成清晰的答案……'],
-  'tinglan.advice': ['正在将分析结果转化为可实践的改进方向……'],
 
   // ---------- 协奏 ----------
   'xiezou.prepare': ['正在安排各项任务的执行顺序……'],

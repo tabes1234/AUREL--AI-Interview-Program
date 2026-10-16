@@ -1,4 +1,4 @@
-﻿import {
+import {
   Briefcase,
   Flame,
   Loader2,
@@ -185,7 +185,6 @@ export default function DashboardPage() {
             <QuietLink to="/reports" className="mr-3">回响</QuietLink>
             <QuietLink to="/challenges" className="mr-3">度衡</QuietLink>
             <QuietLink to="/mistakes" className="mr-3">回澜</QuietLink>
-            <QuietLink to="/expression" className="mr-3">听澜</QuietLink>
             <QuietLink to="/concerto">协奏</QuietLink>
           </p>
         </div>
@@ -323,7 +322,7 @@ function ButtonStart() {
 const KIND_LABELS: Record<string, string> = {
   interview: '问澜',
   challenge: '度衡',
-  expression: '听澜',
+  expression: '协奏',
   mistake: '回澜',
 }
 

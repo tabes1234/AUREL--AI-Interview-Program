@@ -25,7 +25,7 @@ from app.models import (
 _KIND_LABELS = {
     "interview": "问澜",
     "challenge": "度衡",
-    "expression": "听澜",
+    "expression": "协奏",
     "mistake": "回澜",
 }
 

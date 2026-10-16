@@ -246,7 +246,7 @@ def _persist_workflow_record(
         user_id=user_id,
     )
     db.add(record)
-    record_event(db, user_id=user_id, module="tinglan", name="expression_analyze")
+    record_event(db, user_id=user_id, module="xiezou", name="expression_analyze")
     db.commit()
     db.refresh(record)
     return record

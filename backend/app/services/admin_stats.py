@@ -63,7 +63,7 @@ AI_SERVICE_MODULES: dict[str, str] = {
     "matching_suggestions": "heqi",
     "job_analysis": "zhigang",
     "gap_analysis": "guanji",
-    "expression_workflow": "tinglan",
+    "expression_workflow": "xiezou",
     "weekly_note": "xingzhou",
 }
 
@@ -683,7 +683,7 @@ def user_detail(
         "岗位解析（知岗）": db.scalar(
             select(func.count(JobAnalysis.id)).where(JobAnalysis.user_id == uid)
         ) or 0,
-        "表达分析（听澜）": db.scalar(
+        "表达分析（协奏）": db.scalar(
             select(func.count(ExpressionAnalysis.id)).where(ExpressionAnalysis.user_id == uid)
         ) or 0,
         "限时挑战（度衡）": db.scalar(

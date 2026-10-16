@@ -178,10 +178,10 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
         ],
         bullets=[
             "核心目标：模拟面试（问澜）、岗位理解（知岗/知潮）、简历优化（履历成章/合契）、"
-            "职业规划（知途/小鸥）与能力提升（观己/度衡/回澜/听澜）。",
+            "职业规划（知途/小鸥）与能力提升（观己/度衡/回澜/协奏）。",
             "使用场景：个人独立走完求职练习闭环——读懂一个岗位，练一场面试，沉淀错题，"
             "修订简历，再规划下一步。",
-            "工程规模：前端 23 个路由页面，后端 19 个路由模块与 40+ 业务服务，数据库 32 张表。",
+            "工程规模：前端 22 个路由页面，后端 19 个路由模块与 40+ 业务服务，数据库 32 张表。",
         ],
     ),
     ArchiveSection(
@@ -203,7 +203,7 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
             "图标与图表：图标用 `lucide-react ^1.55.0`；能力星图、成长热力图、海洋流光进度等"
             "均为手写 SVG/CSS 组件，未引入图表库。",
             "网络层：原生 `fetch` 封装（`src/api/client.ts`），统一 `ApiError` 与 `/api/v1` 前缀；"
-            "知途对话与听澜工作流使用 SSE 流式读取。",
+            "知途对话与协奏工作流使用 SSE 流式读取。",
             "语音采集：浏览器 `MediaRecorder` API 录音上传，转录在后端完成。",
             "构建与工具链：`Vite ^8.3.0`（dev 服务器 `/api` 代理至后端 8000 端口）、"
             "`ESLint ^10.12.0` + `typescript-eslint`；脚本 `dev` / `build`（`tsc && vite build`）/ `lint` / `typecheck`。",
@@ -253,7 +253,7 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
             "知岗/知潮：`job_analyses`（证据核验 + 推断标注 + JD 内容哈希版本）、`job_positions`、"
             "`job_position_changes`（内容哈希去重与变更历史）、`job_favorites`。",
             "履历成章/合契：`resumes`、`resume_versions`（版本快照）、`resume_match_records`。",
-            "听澜：`expression_analyses`（转录 + 音频/表达指标 + 多角色工作流结果）。",
+            "协奏：`expression_analyses`（表达文本/音频指标 + 多角色工作流结果）。",
             "度衡/回澜：`challenge_runs`（服务端计时）、`mistake_cards`（SM-2 间隔重复）。",
             "知途：`career_conversations`、`career_messages`、`career_profiles`、`career_profile_facts`"
             "（事实三态管理）、`career_plans`、`career_plan_actions`（7/30/90 天行动）、"
@@ -277,7 +277,7 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
         ],
         bullets=[
             "三种调用形态：`chat`（完整回复，用于评分/解析类任务）、`chat_json`（结构化 JSON，"
-            "温度 0.3 + 健壮解析，容忍代码块包裹）、`chat_stream`（SSE 增量流式，用于知途对话与听澜工作流）。",
+            "温度 0.3 + 健壮解析，容忍代码块包裹）、`chat_stream`（SSE 增量流式，用于知途对话与协奏工作流）。",
             "连接复用：模块级共享 `httpx.Client` 连接池（复用 TCP/TLS 连接，上限 32 连接），"
             "消除每次请求重复握手开销。",
             "容错：超时分离配置（连接 10 秒 / 总 120 秒）；网络错误与 429/5xx 指数退避自动重试"
@@ -335,7 +335,6 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
             ["履历成章", "/resume", "已实现", "结构化简历编辑、七款版式模板、版本管理、PDF/Word 真实导出；AI 仅生成建议，经确认才可保存"],
             ["合契", "/matching", "已实现", "岗位 × 简历匹配：命中与缺失均附两侧原文证据，分数附口径说明"],
             ["知藏", "/knowledge", "已实现", "知识文档上传、分块索引、检索增强出题（证据标注出处）"],
-            ["听澜", "/expression", "已实现", "语音转录、客观表达指标（语速/停顿/填充词）与三分析师接力复盘"],
             ["协奏", "/concerto", "已实现", "结构、深度、表达多角色工作流的执行与结果呈现"],
             ["澜讯", "/announcements", "已实现", "平台公告系统；本技术档案即经此系统置顶发布"],
             ["引航", "全站", "已实现", "五步新手引导：首次进入自动开启，可随时重游"],
@@ -358,8 +357,7 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
             "设计令牌：雾白主背景 `#F8FBFF`、云水蓝渐变（mist/shallow/ripple）、主蓝 `#4D83D6`、"
             "深海蓝文字 `#263B57`、细线 `#DCE8F7`，全站统一引用。",
             "排版：Editorial 编辑式画布布局，侧边栏按「启程/洞察/知行」三组导航；卡片悬停轻微上移、阴影加深。",
-            "动效：淡入、微位移、水纹轻动；全站支持 `prefers-reduced-motion`；桌面端低透明度鼠标跟随光晕"
-            "（触屏与减动效模式下关闭）。",
+            "动效：淡入、微位移、水纹轻动；全站支持 `prefers-reduced-motion`。",
             "品牌组件：原创矢量 Logo、小鸥悬浮伙伴（海鸥吉祥物，悬停轻语、点击直达知途）、"
             "首页暖心寄语（7 秒轮换、逐字波浪浮现）。",
             "加载体系：AurelProgress 海洋流光进度系统统一全站异步反馈——不确定任务用流光 + 真实已耗时，"
@@ -410,7 +408,7 @@ TECH_ARCHIVE_SECTIONS: list[ArchiveSection] = [
         ],
         bullets=[
             "已验证：认证与会话全流程；问澜出题-作答-追问-评分-报告全链路；知藏检索出题；知岗解析与修订；"
-            "知潮岗位库与合契匹配；履历成章编辑、模板与导出；听澜转录、指标与工作流；知途对话、记忆与规划；"
+            "知潮岗位库与合契匹配；履历成章编辑、模板与导出；协奏多角色工作流；知途对话、记忆与规划；"
             "度衡与回澜——以上均被 315 项后端测试覆盖。",
             "已实现：四景背景与玻璃体系、AurelProgress 进度系统、小鸥伙伴与暖心寄语、引航引导、"
             "澜讯公告与本技术档案。",

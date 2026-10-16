@@ -1,6 +1,14 @@
 # AUREL 观澜 — 项目状态
 
-更新时间：2026-10-15（语音转录切换本地 Whisper + 移除鼠标跟随光效）
+更新时间：2026-10-16（听澜模块下线 + 语音转录切换本地 Whisper + 移除鼠标跟随光效）
+
+## 听澜模块下线（2026-10-16，用户要求）
+
+- 删除 `ExpressionPage.tsx` 页面、App.tsx 路由、侧边栏「听澜」入口、行舟快速链接、协奏页「去听澜」跳转、usageTracker 页面打点与 waitingCopy 听澜文案
+- **后端 expression 路由与工作流保留**（协奏复用其 `analyze/stream` SSE 接口与 `expression_analyses` 表），仅摘除听澜外壳
+- 使用事件归属改协奏：expression.py 打点 module 改 `xiezou`；admin_stats LLM 归属 `expression_workflow → xiezou`、用户功能计数改「表达分析（协奏）」；usage_tracking 白名单移除 tinglan；周报/成长标签改「协奏」
+- 简介（AboutPage）能力行改写为协奏单独表述；澜讯技术档案 6 处改写（模块清单移除听澜行、路由页数 23→22、SSE/数据表/调用形态表述归协奏、删除已不存在的鼠标光晕描述）；README 模块列表移除听澜
+- 回归：后端 pytest 332/332 通过，前端 tsc+build 通过
 
 ## 语音转录与光效调整（2026-10-15 晚）
 

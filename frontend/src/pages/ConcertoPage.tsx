@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { api, ApiError } from '../api/client'
 import { PageHeading, SectionHead } from '../components/editorial/Editorial'
 import { PageTransition } from '../components/motion/PageTransition'
-import { Button, ButtonLink } from '../components/ui/Button'
+import { Button } from '../components/ui/Button'
 import { EmptyState } from '../components/ui/EmptyState'
 import { TextAreaField } from '../components/ui/Field'
 import type { ExpressionWorkflowResponse } from '../types'
 
-/** 三个协奏席位：与听澜共用同一套多角色复盘流（SSE），此处强调同台并观。 */
+/** 三个协奏席位：共用同一套多角色复盘流（SSE），此处强调同台并观。 */
 const SEATS = [
   { role: 'structure_analyst', label: '结构分析师', scoreKey: 'logic_score', scoreHint: '逻辑结构得分' },
   { role: 'depth_analyst', label: '内容深度分析师', scoreKey: 'depth_score', scoreHint: '内容深度得分' },
@@ -304,9 +304,6 @@ export default function ConcertoPage() {
                 )}
                 {running ? '三位分析师正在同台工作…' : '开始协奏分析'}
               </Button>
-              <ButtonLink to="/expression" variant="ghost" size="sm">
-                需要语音转写？去听澜
-              </ButtonLink>
             </div>
           </div>
         </section>

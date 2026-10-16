@@ -31,7 +31,6 @@ MODULES: dict[str, str] = {
     "shibei": "拾贝模板库",
     "heqi": "合契匹配",
     "zhicang": "知藏知识库",
-    "tinglan": "听澜表达",
     "xiezou": "协奏工作流",
     "huixiang": "回响报告",
     "auth": "账户",

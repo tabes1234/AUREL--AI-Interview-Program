@@ -28,7 +28,7 @@ _WEEKLY_SYSTEM = """你是求职成长平台「观澜 AUREL」的周记撰写者
 _WEEKLY_KIND_LABELS = {
     "interview": "问澜训练",
     "challenge": "度衡挑战",
-    "expression": "听澜分析",
+    "expression": "协奏分析",
     "mistake": "回澜复习",
 }
 

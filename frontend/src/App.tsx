@@ -20,7 +20,6 @@ const InterviewNewPage = lazy(() => import('./pages/InterviewNewPage'))
 const InterviewPreviewPage = lazy(() => import('./pages/InterviewPreviewPage'))
 const InterviewSessionPage = lazy(() => import('./pages/InterviewSessionPage'))
 const KnowledgePage = lazy(() => import('./pages/KnowledgePage').then((m) => ({ default: m.KnowledgePage })))
-const ExpressionPage = lazy(() => import('./pages/ExpressionPage').then((m) => ({ default: m.ExpressionPage })))
 const MatchingPage = lazy(() => import('./pages/MatchingPage').then((m) => ({ default: m.MatchingPage })))
 const JobsPage = lazy(() => import('./pages/JobsPage'))
 const JobLibraryPage = lazy(() => import('./pages/JobLibraryPage'))
@@ -91,7 +90,6 @@ export default function App() {
               <Route path="/knowledge" element={<KnowledgePage />} />
               <Route path="/skills" element={<SkillsPage />} />
               <Route path="/matching" element={<MatchingPage />} />
-              <Route path="/expression" element={<ExpressionPage />} />
               <Route path="/jobs" element={<JobsPage />} />
               <Route path="/job-library" element={<JobLibraryPage />} />
               <Route path="/resume" element={<ResumePage />} />

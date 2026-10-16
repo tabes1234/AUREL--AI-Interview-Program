@@ -15,7 +15,6 @@ const ROUTE_MODULES: { prefix: string; module: string; name: string }[] = [
   { prefix: '/knowledge', module: 'zhicang', name: 'knowledge' },
   { prefix: '/skills', module: 'guanji', name: 'skills' },
   { prefix: '/matching', module: 'heqi', name: 'matching' },
-  { prefix: '/expression', module: 'tinglan', name: 'expression' },
   { prefix: '/jobs', module: 'zhigang', name: 'jobs' },
   { prefix: '/job-library', module: 'zhichao', name: 'job_library' },
   { prefix: '/resume-gallery', module: 'shibei', name: 'resume_gallery' },
